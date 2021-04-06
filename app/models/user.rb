@@ -12,4 +12,6 @@ class User < ApplicationRecord
     has_many :borrowers, :through => :reservations, :class_name => "User"
     has_many :lender_reviews, :through => :listings, :source => :reviews
 
+    has_secure_password
+
 end
