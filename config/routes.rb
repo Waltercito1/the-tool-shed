@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   get '/logout', to: "sessions#destroy"
 
-  get '/' => 'sessions#welcome'
+  get '/' => 'sessions#new'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
   resources :reviews
   resources :reservations
   resources :cities
-  resources :listings
+  #resources :listings
   resources :users, only: [:index, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
