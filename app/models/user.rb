@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_secure_password
+
     has_many :listings, :foreign_key => "lender_id"
     has_many :reservations, :through => :listings
     has_many :borrowed_tools, :foreign_key => "borrower_id", :class_name => "Reservation"
@@ -12,6 +14,5 @@ class User < ApplicationRecord
     has_many :borrowers, :through => :reservations, :class_name => "User"
     has_many :lender_reviews, :through => :listings, :source => :reviews
 
-    has_secure_password
 
 end
