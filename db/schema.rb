@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2021_04_06_020527) do
     t.integer "lender_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_listings_on_city_id"
+    t.index ["lender_id"], name: "index_listings_on_lender_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -38,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_04_06_020527) do
     t.integer "borrower_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["borrower_id"], name: "index_reservations_on_borrower_id"
+    t.index ["listing_id"], name: "index_reservations_on_listing_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -47,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_04_06_020527) do
     t.integer "reservation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["borrower_id"], name: "index_reviews_on_borrower_id"
+    t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
   end
 
   create_table "users", force: :cascade do |t|
