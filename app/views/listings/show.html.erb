@@ -2,3 +2,7 @@
 
 <h4>Category: <%= @listing.category %></h4>
 <p class="listing-description">Description: <%= @listing.description %></p>
+<p class="listing-price">Price: <%= @listing.price %></p>
+
+<p><%= link_to "Edit", edit_listing_path %></p>
+<p><%= link_to "Back to All Listings", listings_path %></p>

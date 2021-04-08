@@ -30,8 +30,8 @@ module ApplicationHelper
         redirect_to user_path(session[:user_id]) if logged_in?
     end
 
-    # def input_error(model, param)
-    #     "input-box #{ 'red-warning' if model.errors["#{param}"].any?}"
-    # end
+    def conditional_errors(object)
+        render partial: "products/errors", locals: {object: object} if object.errors.any?
+    end
     
 end

@@ -4,4 +4,7 @@ class Listing < ApplicationRecord
     has_many :reviews, :through => :reservations
     has_many :borrowers, :class_name => "User", :through => :reservations
 
+    validates :title,  presence: true
+    validates :category, presence: true
+    validates :price, presence: true
 end
