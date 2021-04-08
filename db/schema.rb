@@ -10,24 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_020527) do
-
-  create_table "cities", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2021_04_05_223154) do
 
   create_table "listings", force: :cascade do |t|
     t.string "title"
     t.string "category"
     t.text "description"
     t.decimal "price", precision: 8, scale: 2
-    t.integer "city_id"
     t.integer "lender_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["city_id"], name: "index_listings_on_city_id"
     t.index ["lender_id"], name: "index_listings_on_lender_id"
   end
 
@@ -57,12 +49,15 @@ ActiveRecord::Schema.define(version: 2021_04_06_020527) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "email"
     t.string "password_digest"
+    t.string "street"
+    t.string "city"
+    t.integer "zipcode"
     t.string "contact_info"
     t.boolean "is_lender", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
   end
 
 end

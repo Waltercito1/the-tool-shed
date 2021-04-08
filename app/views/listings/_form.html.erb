@@ -1,0 +1,16 @@
+<div class="form-input">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+</div>
+<div class="form-input">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+</div>
+<div class="form-input">
+    <%= f.label :category %>
+    <%= f.select :category, options_for_select([ "Car Mechanics", "Yard Work", "House Remodeling", "Metalworking", "Power Tools"], selected: @listing.category), include_blank: "Select a category"%>
+</div>
+<div class="form-input">
+    <%= f.label :price %>
+    <%= f.number_field :price, step: 0.01%><br>
+</div>

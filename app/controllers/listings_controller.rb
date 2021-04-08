@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
     end
 
     def show
+        find_listing
     end
 
     def new 

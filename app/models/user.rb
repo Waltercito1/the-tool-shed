@@ -11,7 +11,6 @@ class User < ApplicationRecord
     has_many :lenders, :through => :borrowed_tool_listings, :foreign_key => :lender_id
 
     ## As a lender
-    has_many :borrowers, :through => :reservations, :class_name => "User"
     has_many :lender_reviews, :through => :listings, :source => :reviews
 
 
