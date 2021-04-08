@@ -1,5 +1,19 @@
 module ApplicationHelper
 
+    def display_list_conditionally(collection)
+        if collection.length == 0
+            content_tag(:h4, "There are currently no resources, go create one", class: "no-listings")
+        else
+            tag.div class: class_name(collection) do
+                render collection
+            end
+        end
+    end
+
+    def class_name(collection)
+        collection.first.class == Listing ? "listing table--3cols" : "table table--3cols"
+    end
+
     def logged_in?
         !!session[:user_id]
     end
@@ -16,4 +30,8 @@ module ApplicationHelper
         redirect_to user_path(session[:user_id]) if logged_in?
     end
 
+    # def input_error(model, param)
+    #     "input-box #{ 'red-warning' if model.errors["#{param}"].any?}"
+    # end
+    
 end
