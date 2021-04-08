@@ -14,16 +14,21 @@ class ListingsController < ApplicationController
     end
 
     def create
-        @listing = Listing.create(listing_params(:title, :category, :description, :price))
-        if @listing.valid?
+        #byebug
+        @listing = Listing.new(listing_params)
+        if @listing.save
             redirect_to @listing
         else
             render :new
         end
     end
 
+    def edit
+
+    end
+
     def update
-        @listing.update(listing_params(:title, :category, :description, :price))
+        @listing.update(listing_params)
         if @listing.valid?
             redirect_to @listing
         else
@@ -41,8 +46,8 @@ class ListingsController < ApplicationController
 
     private
 
-    def listing_params(*args)
-        params.require(:listing).permit(*args)
+    def listing_params
+        params.require(:listing).permit(:title, :category, :description, :price)
     end
 
     def find_listing
