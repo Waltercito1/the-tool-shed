@@ -13,5 +13,7 @@ class User < ApplicationRecord
     ## As a lender
     has_many :lender_reviews, :through => :listings, :source => :reviews
 
+    validates :username,  presence: true, uniqueness: true, length: {minimum: 6}
+    
 
 end
