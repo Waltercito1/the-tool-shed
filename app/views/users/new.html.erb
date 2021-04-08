@@ -1,4 +1,5 @@
 <h1>Signup</h1>
+<%= render partial: 'errors/error', locals: { object: @user }%>
 
 <div id="signup-form" class="hide">
     <%= form_with(model: @user) do |f| %>
