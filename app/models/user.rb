@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :reservations, :through => :listings
     has_many :booked_reservations, :class_name => "Reservation", :foreign_key => "borrower_id"
     has_many :accepted_reservations, :class_name => "Reservation", :foreign_key => "lender_id"
+    
     has_many :borrowed_tools, :foreign_key => "borrower_id", :class_name => "Reservation"
     has_many :reviews, :foreign_key => "borrower_id"
 
