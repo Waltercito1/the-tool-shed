@@ -31,7 +31,7 @@ module ApplicationHelper
     end
 
     def conditional_errors(object)
-        render partial: "products/errors", locals: {object: object} if object.errors.any?
+        render partial: "errors/error", locals: {object: object} if object.errors.any?
     end
     
 end
