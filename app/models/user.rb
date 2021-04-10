@@ -36,4 +36,6 @@ class User < ApplicationRecord
     # has_many :lender_reviews, :through => :listings, :source => :reviews
 
     validates :first_name,  presence: true#, uniqueness: true, length: {minimum: 6}
+    validates :last_name,  presence: true
+    validates :email,  presence: true
 end

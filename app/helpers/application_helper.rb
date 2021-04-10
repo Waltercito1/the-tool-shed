@@ -2,7 +2,7 @@ module ApplicationHelper
 
     def display_list_conditionally(collection)
         if collection.length == 0
-            content_tag(:h4, "There are currently no resources, go create one", class: "no-listings")
+            content_tag(:h4, "There is currently nothing to list here.", class: "no-listings")
         else
             tag.div class: class_name(collection) do
                 render collection
