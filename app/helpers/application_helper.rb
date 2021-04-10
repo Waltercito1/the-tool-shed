@@ -31,6 +31,7 @@ module ApplicationHelper
     end
 
     def conditional_errors(object)
+        #byebug
         render partial: "listings/errors", locals: {object: object} if object.errors.any?
     end
     

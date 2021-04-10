@@ -6,5 +6,6 @@
     </header>
     <%= form_with(model: @listing) do |f| %>
         <%= render partial: "form", locals: {f: f} %>
+    
     <div class="form-button"><%= f.submit %></div>
 <% end %>

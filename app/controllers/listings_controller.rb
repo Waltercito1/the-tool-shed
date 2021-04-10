@@ -28,9 +28,9 @@ class ListingsController < ApplicationController
 
     def update
         #byebug
-        current_user.listings.update(listing_params)
+        current_user.open_listings.update(listing_params)
         #@listing.update(listing_params)
-        if current_user.listings.last.valid? #@listing.valid?
+        if current_user.open_listings.last.valid? #@listing.valid?
             redirect_to @listing
         else
             render :edit
