@@ -1,7 +1,11 @@
-<h1>Welcome <%= current_user.username %>!</h1>
+<h1>Welcome <%= current_user.first_name %>!</h1>
+<h2>Your Contact Information</h2>
+<p>Please review and update as necessary. This is the information other users will use to get in touch with you.</p> 
 
-<h4><%= current_user.email %></h4>
-<h4><%= current_user.street %>, <%= current_user.city %>, <%= current_user.state %>, <%= current_user.zipcode %></h4>
+<h4>Full Name: <%= current_user.first_name %> <%= current_user.last_name %></h4>
+<h4>Email: <%= current_user.email %></h4>
+<h4>Address: <%= current_user.street %>, <%= current_user.city %>, <%= current_user.state %>, <%= current_user.zipcode %></h4>
+<h4>Additional Contact Information: <%= current_user.contact_info %></h4>
 
 <%= link_to "Edit Profile", edit_user_path %>
 <%= link_to "Log out", logout_path %>
