@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
         #byebug
         @listing = current_user.open_listings.create(listing_params)
         if @listing.valid?
-            redirect_to @listing #current_user.open_listings.last #, success: "Your New Listing Was Created Successfully!"
+            redirect_to @listing
         else
             render :new
         end
@@ -27,10 +27,8 @@ class ListingsController < ApplicationController
     end
 
     def update
-        #byebug
-        #current_user.open_listings.update(listing_params)
         @listing.update(listing_params)
-        if @listing.valid? #current_user.open_listings.last.valid? #@listing.valid?
+        if @listing.valid?
             redirect_to @listing
         else
             render :edit

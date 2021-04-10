@@ -1,11 +1,16 @@
+<%= conditional_errors(@user) %>
+
 <h1>Signup</h1>
-<%= render partial: 'errors/error', locals: { object: @user }%>
 
 <div id="signup-form" class="hide">
     <%= form_with(model: @user) do |f| %>
         <div class="form-control">
-            <%= f.label :username, class: "form-label" %>
-            <%= f.text_field :username, class: "form-input" %>
+            <%= f.label :first_name, class: "form-label" %>
+            <%= f.text_field :first_name, class: "form-input" %>
+        </div>
+        <div class="form-control">
+            <%= f.label :last_name, class: "form-label" %>
+            <%= f.text_field :last_name, class: "form-input" %>
         </div>
         <div class="form-control">
             <%= f.label :email, class: "form-label" %>
