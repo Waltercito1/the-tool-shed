@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_150508) do
+ActiveRecord::Schema.define(version: 2021_04_10_171716) do
 
   create_table "listings", force: :cascade do |t|
     t.string "title"
@@ -43,7 +43,9 @@ ActiveRecord::Schema.define(version: 2021_04_08_150508) do
     t.integer "reservation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "listing_id", null: false
     t.index ["borrower_id"], name: "index_reviews_on_borrower_id"
+    t.index ["listing_id"], name: "index_reviews_on_listing_id"
     t.index ["reservation_id"], name: "index_reviews_on_reservation_id"
   end
 
