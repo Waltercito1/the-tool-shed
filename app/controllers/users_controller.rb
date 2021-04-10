@@ -20,10 +20,15 @@ class UsersController < ApplicationController
     end
 
     def edit
+        
     end
 
     def update
-        @user
+        if @user.update(user_params)
+            redirect_to @user
+        else
+            render :edit
+        end
     end
 
     private
