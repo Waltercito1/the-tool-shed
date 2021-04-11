@@ -5,4 +5,7 @@ class Reservation < ApplicationRecord
     
     scope :pending_approval, -> { where status: "pending"}
 
+    validates :check_in, presence: true
+    validates :check_out, presence: true
+
 end

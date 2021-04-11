@@ -12,6 +12,7 @@
 <hr>
 <h2>Listings That Need Your Immediate Attention:</h2>
 <p>Please review and confirm the reservation, or contact the person interested in borrowing your tool.</p> 
+
 <% if  current_user %>
 <%= display_list_conditionally(current_user.open_listings) %>
 <% end %>

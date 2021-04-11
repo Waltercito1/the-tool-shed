@@ -7,4 +7,6 @@ class Listing < ApplicationRecord
     validates :title,  presence: true #, length: {minimum: 8}
     validates :category, presence: true
     validates :price, presence: true
+
+
 end
