@@ -1,5 +1,7 @@
 <h1>Welcome to The Tool Shed!</h1>
-
+<% if flash[:messages] %>
+    <h2 class="login_signup_errors"><%= flash[:messages] %></h2>
+<% end %>
 <h1>Log in</h1>
 
 <div id="login-form">
