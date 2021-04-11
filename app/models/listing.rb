@@ -8,5 +8,6 @@ class Listing < ApplicationRecord
     validates :category, presence: true
     validates :price, presence: true
 
+    
 
 end

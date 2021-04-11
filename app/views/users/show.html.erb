@@ -14,5 +14,5 @@
 <p>Please review and confirm the reservation, or contact the person interested in borrowing your tool.</p> 
 
 <% if  current_user %>
-<%= display_list_conditionally(current_user.open_listings) %>
+<%= display_list_conditionally(reservations_pending_approval) %>
 <% end %>

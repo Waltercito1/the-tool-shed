@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     def show
         current_user
         #byebug
+        #@pending_listings = Listing.pending_approval
+        #byebug
         #@pending = current_user.open_listings.pending_approval
     end
 
