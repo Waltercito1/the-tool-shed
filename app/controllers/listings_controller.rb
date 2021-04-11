@@ -14,7 +14,6 @@ class ListingsController < ApplicationController
     end
 
     def create
-        #byebug
         @listing = current_user.open_listings.create(listing_params)
         if @listing.valid?
             redirect_to @listing

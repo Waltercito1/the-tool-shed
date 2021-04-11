@@ -7,9 +7,8 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.create(reservation_params)
-        #current_user.reservations.create(reservation_params)
-        if @reservation.valid? #current_user.reservations.last.valid?
-            redirect_to @reservation #current_user.reservations.last 
+        if @reservation.valid?
+            redirect_to @reservation
         else
             render :new
         end
