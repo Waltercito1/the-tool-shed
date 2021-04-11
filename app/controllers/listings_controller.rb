@@ -7,6 +7,8 @@ class ListingsController < ApplicationController
 
     def show
         find_listing
+        #@pending = reservations_pending_approval
+        #byebug
     end
 
     def new 

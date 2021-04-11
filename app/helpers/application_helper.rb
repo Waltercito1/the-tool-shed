@@ -34,5 +34,11 @@ module ApplicationHelper
         #byebug
         render partial: "listings/errors", locals: {object: object} if object.errors.any?
     end
+
+    def reservations_pending_approval
+        current_user.reservations.pending_approval.map do |r|
+            Listing.find_by_id(r.listing_id)
+        end
+    end
     
 end

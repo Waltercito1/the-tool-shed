@@ -38,4 +38,6 @@ class User < ApplicationRecord
     validates :first_name,  presence: true#, uniqueness: true, length: {minimum: 6}
     validates :last_name,  presence: true
     validates :email,  presence: true
+
+    
 end
