@@ -18,10 +18,22 @@ class ReservationsController < ApplicationController
         find_reservation 
     end
 
+    def edit
+    end
+
+    def update
+        @reservation.update(reservation_params)
+        if @reservation.valid?
+            redirect_to @reservation #need to fix redirect_to current_user dashboard
+        else
+            render :edit
+        end
+    end
+
     private
 
     def reservation_params
-        params.require(:reservation).permit(:check_in, :check_out)
+        params.require(:reservation).permit(:check_in, :check_out, :status)
     end
 
     def find_reservation

@@ -1,4 +1,4 @@
-<h1>Welcome <%= current_user.first_name %>!</h1>
+<h1><%= current_user.first_name %>'s Dashboard</h1>
 <h2>Your Contact Information</h2>
 <p>Please review and update if necessary. This is the information other users will use to get in touch with you.</p> 
 
@@ -15,3 +15,4 @@
 <p>Please review and confirm the reservation, or contact the person interested in borrowing your tool.</p> 
 <%= display_list_conditionally(reservations_pending_approval) %>
 <hr>
+

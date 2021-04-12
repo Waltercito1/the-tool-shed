@@ -1,24 +1,29 @@
 <h1><%= @listing.title %></h1>
-
-<h4 class="listing-category">Category: <%= @listing.category %></h4>
+<p class="listing-category">Tool Owner: <%= @listing.lender.first_name %> <%= @listing.lender.last_name %></p>
+<p class="listing-category">Category: <%= @listing.category %></p>
 <p class="listing-description">Description: <%= @listing.description %></p>
 <p class="listing-price">Cost per day: $<%= @listing.price %></p>
 
 <p class="listing-reservations">Number of pending reservations: <%= @listing.reservations.length %></p>
 
-
-<p><%= link_to "Edit", edit_listing_path %> OR <%= button_to "Delete", @listing, method: "delete", data: {confirm: "Are you sure???"} %></p>
-<p><%= link_to "Back to All Listings", listings_path %></p>
+<% if current_user.id == @listing.lender.id %>
+    <p><%= link_to "Edit", edit_listing_path %> OR <%= button_to "Delete", @listing, method: "delete", data: {confirm: "Are you sure???"} %></p>
+    <p><%= link_to "Back to All Listings", listings_path %></p>
+<% end %>
 <hr>
 <% if @listing.reservations.length > 0 %>
     <h4 class="reservation-details">Reservation Details:</h4>
             <% @listing.reservations.each do |r| %>
-                <p class="listing-borrower"><strong>Interested Party:</strong> <%= r.borrower.first_name %>, <%= r.borrower.last_name %></p>
-                <p class="listing-borrower"><strong>Dates:</strong> From <%= r.check_in.strftime("%A, %B %e, %Y") %> to <%= r.check_out.strftime("%A, %B %e, %Y") %>.</p>
+                <p class="listing-borrower"><strong>Made on:</strong> <%= r.created_at.strftime("%A, %d %b %Y %l:%M %p") %>.</p>
+                <p class="listing-borrower"><strong>Interested Party:</strong> <%= r.borrower.first_name %>, <%= r.borrower.last_name %>.</p>
+                <p class="listing-borrower"><strong>Dates requested:</strong> From <%= r.check_in.strftime("%A, %B %e, %Y") %> to <%= r.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= r.duration %> day(s).</p>
                 <p class="listing-borrower"><strong>Address:</strong> <%= r.borrower.street %>, <%= r.borrower.city %>, <%= r.borrower.state %>, <%= r.borrower.zipcode %></p>
                 <p class="listing-borrower"><strong>Email:</strong> <%= mail_to r.borrower.email %></p>
+                <p class="listing-borrower"><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p>
+                <% if current_user.id == @listing.lender.id %>
+                    <h4 class="reservation-details"> <%= link_to "Confirm Reservation", reservation_path(r.id) %></h4> <!--Need to fix-->
+                <% end %>
             <% end %>
-    <h4 class="reservation-details"> <%= link_to "Confirm Reservation", listing_path(@listing) %></h4> <!--Need to fix-->
 <% else %>
     <p class="reservation-details">This listing has no pending reservations.</p>    
 <% end %>
