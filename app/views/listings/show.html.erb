@@ -14,14 +14,14 @@
 <% if @listing.reservations.length > 0 %>
     <h4 class="reservation-details">Reservation Details:</h4>
             <% @listing.reservations.each do |r| %>
-                <p class="listing-borrower"><strong>Made on:</strong> <%= r.created_at.strftime("%A, %d %b %Y %l:%M %p") %>.</p>
+                <p class="listing-borrower"><strong>Made on:</strong> <%= r.created_at.strftime("%A, %d %b %Y %l:%M %p") %>. <strong>Status:</strong> <%= r.status %>.</p>
                 <p class="listing-borrower"><strong>Interested Party:</strong> <%= r.borrower.first_name %>, <%= r.borrower.last_name %>.</p>
                 <p class="listing-borrower"><strong>Dates requested:</strong> From <%= r.check_in.strftime("%A, %B %e, %Y") %> to <%= r.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= r.duration %> day(s).</p>
                 <p class="listing-borrower"><strong>Address:</strong> <%= r.borrower.street %>, <%= r.borrower.city %>, <%= r.borrower.state %>, <%= r.borrower.zipcode %></p>
                 <p class="listing-borrower"><strong>Email:</strong> <%= mail_to r.borrower.email %></p>
                 <p class="listing-borrower"><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p>
                 <% if current_user.id == @listing.lender.id %>
-                    <h4 class="reservation-details"> <%= link_to "Confirm Reservation", reservation_path(r.id) %></h4> <!--Need to fix-->
+                    <h4 class="reservation-details"> <%= link_to "Confirm Reservation", edit_reservation_path(r.id) %></h4> <!--Need to fix-->
                 <% end %>
             <% end %>
 <% else %>
