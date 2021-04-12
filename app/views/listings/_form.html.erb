@@ -11,6 +11,6 @@
     <%= f.select :category, options_for_select([ "Car Mechanics", "Yard Work", "House Remodeling", "Metalworking", "Power Tools"], selected: @listing.category), include_blank: "Select a category"%>
 </div>
 <div class="form-input">
-    <%= f.label :price %>
+    <%= f.label :price_per_day %>
     <%= f.number_field :price, step: 0.01%> <br>
 </div>

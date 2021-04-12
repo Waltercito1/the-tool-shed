@@ -24,7 +24,7 @@
               <ul>
               <% if logged_in?%>
                 <li>
-                  Current user: <%= current_user.username%>
+                  Current user: <%= current_user.first_name%> <%= current_user.last_name %>
                 </li>
                 <li>
                   <a class="float-right" href="/logout">Logout</a>
