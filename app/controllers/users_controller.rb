@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
     def show
         redirect_if_not_logged_in
-        #current_user
-        find_user
+        current_user
+        #find_user
     end
 
     def edit
