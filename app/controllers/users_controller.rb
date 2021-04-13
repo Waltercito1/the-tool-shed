@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        #redirect_if_not_logged_in
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id

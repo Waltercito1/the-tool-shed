@@ -30,10 +30,18 @@ class ReservationsController < ApplicationController
         end
     end
 
+    def confirm
+        #byebug
+        reservation = Reservation.find_by_id(params[:reservation_id].keys.first)
+        reservation.status = "Approved"
+        reservation.save
+        redirect_to listing_path(reservation.listing_id)
+    end
+
     private
 
     def reservation_params
-        params.require(:reservation).permit(:check_in, :check_out, :status)
+        params.require(:reservation).permit(:check_in, :check_out, :status, :listing_id)
     end
 
     def find_reservation

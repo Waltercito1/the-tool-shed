@@ -21,7 +21,12 @@
                 <p class="listing-borrower"><strong>Email:</strong> <%= mail_to r.borrower.email %></p>
                 <p class="listing-borrower"><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p>
                 <% if current_user.id == @listing.lender.id %>
-                    <h4 class="reservation-details"> <%= link_to "Confirm Reservation", edit_reservation_path(r.id) %></h4> <!--Need to fix-->
+                    <h4 class="reservation-details">  
+                    <%= form_with(url: '/confirm_reservation') do |f| %>
+                        <%= hidden_field :reservation_id, r.id %>
+                      
+                        <%= f.submit "Confirm Reservation" %></h4> <!--Need to fix-->
+                    <% end %>
                 <% end %>
             <% end %>
 <% else %>
