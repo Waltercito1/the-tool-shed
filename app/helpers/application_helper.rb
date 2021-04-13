@@ -40,9 +40,5 @@ module ApplicationHelper
             Listing.find_by_id(r.listing_id)
         end
     end
-
-    def find_and_confirm
-        
-    end
     
 end
