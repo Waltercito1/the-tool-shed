@@ -31,11 +31,7 @@ class ReservationsController < ApplicationController
     end
 
     def confirm
-        #byebug
-        reservation = Reservation.find_by_id(params[:reservation_id].keys.first)
-        reservation.status = "Confirmed"
-        reservation.save
-        redirect_to listing_path(reservation.listing_id)
+        change_reservation_status(params)
     end
 
     private

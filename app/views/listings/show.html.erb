@@ -20,19 +20,28 @@
             <p class="listing-borrower"><strong>Address:</strong> <%= r.borrower.street %>, <%= r.borrower.city %>, <%= r.borrower.state %>, <%= r.borrower.zipcode %></p>
             <p class="listing-borrower"><strong>Email:</strong> <%= mail_to r.borrower.email %></p>
             <p class="listing-borrower"><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p>
+            
             <% if current_user.id == @listing.lender.id && r.status == "pending" %>
                 <h4 class="reservation-details">  
                     <%= form_with(url: '/confirm_reservation') do |f| %>
                     <%= hidden_field :reservation_id, r.id %>
                     <%= f.submit "Confirm Reservation" %></h4>
                 <% end %>
-            <% else %>
+            <% elsif current_user.id == @listing.lender.id && r.status == "Confirmed" %>
                 <h4 class="reservation-details">  
                     <%= form_with(url: '/confirm_reservation') do |f| %>
                     <%= hidden_field :reservation_id, r.id %>
                     <%= f.submit "Cancel Reservation" %></h4>
                 <% end %>
+            
+            <% elsif current_user.id == @listing.lender.id && r.status == "Cancelled" %>
+                <h4 class="reservation-details">  
+                    <%= form_with(url: '/confirm_reservation') do |f| %>
+                    <%= hidden_field :reservation_id, r.id %>
+                    <%= f.submit "Revert Status to Pending" %></h4>
+                <% end %>
             <% end %>
+    
         <% end %>
 <% else %>
     <p class="reservation-details">This listing has no pending reservations.</p>    
