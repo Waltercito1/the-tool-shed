@@ -1,1 +1,7 @@
+<%= form_with(url: listings_path, method: :get) do |f| %>
+    <%= f.label :search, "Search tools by name" %>
+    <%= f.text_field :search %>
+    <%= f.submit "Search" %>
+<% end %>
+
 <%= display_list_conditionally(@listings) %>

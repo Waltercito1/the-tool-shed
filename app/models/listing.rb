@@ -8,6 +8,6 @@ class Listing < ApplicationRecord
     validates :category, presence: true
     validates :price, presence: true
 
-    
+    scope :search_by_name, -> (search) {where("title LIKE ?", "%#{search}%")}
 
 end

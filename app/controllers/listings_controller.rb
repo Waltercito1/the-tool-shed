@@ -2,7 +2,11 @@ class ListingsController < ApplicationController
     before_action :find_listing, only: [:show, :edit, :update, :destroy]
 
     def index
-        @listings = Listing.all
+        if params["search"]
+            @listings = Listing.search_by_name(params["search"])
+        else
+            @listings = Listing.all
+        end
     end
 
     def show
