@@ -3,7 +3,7 @@ class Reservation < ApplicationRecord
     belongs_to :borrower, :class_name => "User"
     has_one :review
     
-    scope :pending_approval, -> { where status: "pending"}
+    scope :pending_approval, -> { where status: "Pending"}
 
     validates :check_in, presence: true
     validates :check_out, presence: true

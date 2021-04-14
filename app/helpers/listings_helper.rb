@@ -6,7 +6,7 @@ module ListingsHelper
     # end
 
     # def display_buttons_conditionally(object, r)
-    #     <% if current_user.id == object.lender.id && r.status == "pending" %>
+    #     <% if current_user.id == object.lender.id && r.status == "Pending" %>
     #         <h4 class="reservation-details">  
     #             <%= form_with(url: '/confirm_reservation') do |f| %>
     #             <%= hidden_field :reservation_id, r.id %>
