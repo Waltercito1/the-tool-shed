@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
     def show
         redirect_if_not_logged_in
         find_listing
+        #@reservation = @listing.reservations.build
     end
 
     def new 

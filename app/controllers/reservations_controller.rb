@@ -6,12 +6,15 @@ class ReservationsController < ApplicationController
     end
 
     def create
+        #@reservation = Reservation.create(reservation_params)
+        @reservation = Reservation.new(reservation_params)
+        @reservation.listing_id = params["listing_id"]
+        @reservation.borrower_id = current_user.id
         byebug
-        @reservation = Reservation.create(reservation_params)
-        if @reservation.valid?
+        if @reservation.save
             redirect_to @reservation
         else
-            render :new
+            redirect_to listing_path(params["listing_id"])
         end
     end
 
