@@ -44,12 +44,12 @@ module ApplicationHelper
     def change_reservation_status(params)
         reservation = Reservation.find_by_id(params[:reservation_id].keys.first)
         case reservation.status
-        when "pending"
+        when "Pending"
             reservation.status = "Confirmed"
         when "Confirmed"
             reservation.status = "Cancelled"
         when "Cancelled"
-            reservation.status = "pending"
+            reservation.status = "Pending"
         end
         reservation.save
         redirect_to listing_path(reservation.listing_id)

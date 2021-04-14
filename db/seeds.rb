@@ -16,7 +16,7 @@ Listing.create(title: "HERCULES 15 Amp 66 Lb. 1-1/8 In. Hex Breaker Hammer With 
 Listing.create(title: "Dewalt XR Li-Ion Compact Brushless Drill / Driver", category: "House Remodeling", description: "DEWALT brushless motor delivers up to 57% more run time over brushed. Ergonomic comfort grip handle provides ideal balance and tool control", price: 9.99, lender_id: 2)
 Listing.create(title: "True Temper 6' Cubic Steel Wheelbarrow", category: "Yard Work", description: "Heavy-duty undercarriage. Tough steel handles w/comfort grips. 16 inch sport flat-free tire, never needs air", price: 10.99, lender_id: 3)
 
-Reservation.create(check_in: "2021-04-08", check_out: "2021-04-10", deposit: nil, status: "pending", listing_id: 1, borrower_id: 2)
-Reservation.create(check_in: "2021-04-08", check_out: "2021-04-10", deposit: nil, status: "pending", listing_id: 3, borrower_id: 1)
+Reservation.create(check_in: "2021-04-08", check_out: "2021-04-10", deposit: nil, listing_id: 1, borrower_id: 2)
+Reservation.create(check_in: "2021-04-08", check_out: "2021-04-10", deposit: nil, listing_id: 3, borrower_id: 1)
 
 Review.create(description: "Very good.", rating: 5, borrower_id: 2, reservation_id: 1, listing_id: 1)
