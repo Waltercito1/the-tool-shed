@@ -44,6 +44,11 @@
     
         <% end %>
 <% else %>
-    <p class="reservation-details">This listing has no pending reservations.</p>    
+    <p class="reservation-details">This listing has no pending reservations.</p>
+    <h4 class="reservation-details">  
+        <%= form_with(url: '/reservations/new', method: 'GET', action: 'new') do |f| %>
+        <%= hidden_field :listing_id, @lsiting %>
+        <%= f.submit "Reserve this Tool" %></h4>
+    <% end %>
 <% end %>
 <hr>

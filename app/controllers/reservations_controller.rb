@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
     end
 
     def create
+        byebug
         @reservation = Reservation.create(reservation_params)
         if @reservation.valid?
             redirect_to @reservation

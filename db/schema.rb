@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_171716) do
     t.date "check_in"
     t.date "check_out"
     t.decimal "deposit", precision: 8, scale: 2
-    t.string "status", default: "pending"
+    t.string "status", default: "Pending"
     t.integer "listing_id"
     t.integer "borrower_id"
     t.datetime "created_at", precision: 6, null: false

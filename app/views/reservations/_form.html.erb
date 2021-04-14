@@ -6,9 +6,3 @@
     <%= f.label :return_date %>
     <%= f.date_field :check_out %>
 </div>
-<% if current_user.id == @reservation.listing.lender_id %>
-    <div class="form-input">
-        <%= f.label :status %>
-        <%= f.select :status, options_for_select([ "pending", "approved"], selected: @reservation.status) %>
-    </div>
-<% end %>

@@ -24,4 +24,5 @@ class Reservation < ApplicationRecord
           end
         end
     end
+    
 end
