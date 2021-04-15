@@ -62,3 +62,19 @@
     <% end %>
 <% end %>
 <hr>
+
+
+<%= link_to "Check out all listed tools", listings_path %>
+<%= form_with(model: [@listing, @listing.reservations.build]) do |f| %>
+
+        <div class="form-input">
+            <%= f.label :pick_up_date %>
+            <%= f.date_field :check_in %>
+        </div>
+        <div class="form-input">
+            <%= f.label :return_date %>
+            <%= f.date_field :check_out %>
+        </div>
+
+        <%= f.submit "Reserve this Tool" %></h4>
+    <% end %>

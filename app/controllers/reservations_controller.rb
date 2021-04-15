@@ -9,8 +9,9 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         @reservation.listing_id = params["listing_id"]
         @reservation.borrower_id = current_user.id
+        byebug
         if @reservation.save
-            redirect_to @reservation
+            redirect_to listing_path(params["listing_id"]) #@reservation
         else
             redirect_to listing_path(params["listing_id"])
         end
