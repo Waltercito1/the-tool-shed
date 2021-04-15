@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_04_10_171716) do
     t.integer "zipcode"
     t.string "contact_info"
     t.boolean "is_lender", default: false
+    t.string "uid"
+    t.string "provider"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"

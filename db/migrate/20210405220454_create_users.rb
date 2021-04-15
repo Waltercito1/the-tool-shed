@@ -11,6 +11,8 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.integer :zipcode
       t.string :contact_info
       t.boolean :is_lender, default: false
+      t.string :uid
+      t.string :provider
 
       t.timestamps
     end
