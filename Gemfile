@@ -24,8 +24,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
-# gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+# gem 'omniauth-github'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

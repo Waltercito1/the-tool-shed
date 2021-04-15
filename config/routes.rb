@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'auth/:provider/callback', to: 'sessions#omniauth'
+  
   get '/signup', to: 'users#new'
   #post '/users', to: 'users#create'
   post '/signup', to: 'users#create'
