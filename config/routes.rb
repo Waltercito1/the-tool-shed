@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
-  get '/logout', to: "sessions#destroy"
+  post '/logout', to: "sessions#destroy"
 
   
   #post '/confirm_reservation', to: "reservations#confirm"
   post '/confirm_reservation', to: "reservations#confirm"
 
-  get '/', to: 'sessions#new'
+  #get '/', to: 'sessions#new'
+  root 'sessions#new'
   #get '/login', to: 'sessions#new'
 
   resources :reviews

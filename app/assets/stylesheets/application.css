@@ -13,8 +13,48 @@
  *= require_tree .
  *= require_self
  */
+
  .field_with_errors {
     padding: 2px;
     background-color: red;
     display: inline;
 }
+
+/* NAV BAR */
+ul.nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #323264;
+    width: 100%;
+ }
+ 
+ li.nav-bar {
+     display: inline;
+     float: left;
+     
+ }
+
+ li.nav-bar-float-right {
+  display: inline;
+  float: right;
+  
+}
+
+.nav-bar a {
+    display: block;
+    color: #f7f6e7;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.nav-bar a:hover {
+    color: #f1b984;
+}
+.nav-bar a:visited {
+    color: white
+}
+
