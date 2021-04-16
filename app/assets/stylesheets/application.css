@@ -20,6 +20,13 @@
     display: inline;
 }
 
+.flash_errors {
+    padding: 2px;
+    /* background-color: red;*/
+    display: inline;
+    color: red
+}
+
 /* NAV BAR */
 ul.nav-bar {
     list-style-type: none;
@@ -57,4 +64,3 @@ ul.nav-bar {
 .nav-bar a:visited {
     color: white
 }
-
