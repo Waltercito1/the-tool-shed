@@ -18,6 +18,10 @@ class User < ApplicationRecord
     validates :last_name,  presence: true
     validates :email,  presence: true
 
+    def full_name
+        self.first_name.capitalize + " " + self.last_name.capitalize
+    end
+
     def self.from_omniauth(auth)
         self.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |u|
             u.email = auth['info']['email']

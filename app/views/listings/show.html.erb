@@ -1,6 +1,6 @@
 
 <h1><%= @listing.title %></h1>
-<p class="listing-category">Tool Owner: <%= @listing.lender.first_name %> <%= @listing.lender.last_name %></p>
+<p class="listing-category">Tool Owner: <%= @listing.lender.full_name %></p>
 <p class="listing-category">Category: <%= @listing.category %></p>
 <p class="listing-description">Description: <%= @listing.description %></p>
 <p class="listing-price">Cost per day: $<%= @listing.price %></p>

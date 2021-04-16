@@ -21,7 +21,7 @@
       <li class="nav-bar-float-right"> <%= link_to 'Sign Up', new_user_path %> </li>
     <% else %>
       <li class="nav-bar-float-right"> <%= link_to "Logout", logout_path, method: "post" %> </li>
-      <li class="nav-bar-float-right"> <%= link_to current_user.first_name%> </li>
+      <li class="nav-bar-float-right"> <%= link_to current_user.full_name%> </li>
     <% end %>
   </ul>
 
