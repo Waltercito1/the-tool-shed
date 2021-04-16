@@ -16,6 +16,7 @@ Listing.create(title: "HERCULES 15 Amp 66 Lb. 1-1/8 In. Hex Breaker Hammer With 
 Listing.create(title: "Dewalt XR Li-Ion Compact Brushless Drill / Driver", category: "House Remodeling", description: "DEWALT brushless motor delivers up to 57% more run time over brushed. Ergonomic comfort grip handle provides ideal balance and tool control", price: 9.99, lender_id: 2)
 Listing.create(title: "True Temper 6' Cubic Steel Wheelbarrow", category: "Yard Work", description: "Heavy-duty undercarriage. Tough steel handles w/comfort grips. 16 inch sport flat-free tire, never needs air", price: 10.99, lender_id: 3)
 Listing.create(title: "Cordless Brushed Circular Saw Tool", category: "Power Tools", description: "DCS391B 20V MAX 6-1/2 in. circular saw with a 6-1/2 in. carbide tipped blade operates on a powerful 5150 rpm motor with a 0 to 50-degree bevel capacity on a lightweight and durable magnesium shoe.", price: 12.99, lender_id: 3)
+Listing.create(title: "Check Engine Scanner Tool DS808 Kit All System Diagnostic", category: "Car Mechanics", description: "DCS391B 20V MAX 6-1/2 in. circular saw with a 6-1/2 in. carbide tipped blade operates on a powerful 5150 rpm motor with a 0 to 50-degree bevel capacity on a lightweight and durable magnesium shoe.", price: 24.99, lender_id: 3)
 
 Reservation.create(check_in: "2021-04-08", check_out: "2021-04-10", deposit: nil, listing_id: 1, borrower_id: 2)
 Reservation.create(check_in: "2021-04-08", check_out: "2021-04-10", deposit: nil, listing_id: 3, borrower_id: 1)

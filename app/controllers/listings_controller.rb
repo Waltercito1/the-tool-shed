@@ -21,6 +21,7 @@ class ListingsController < ApplicationController
     def create
         @listing = current_user.open_listings.create(listing_params)
         if @listing.valid?
+            set_as_lender
             redirect_to @listing
         else
             render :new
