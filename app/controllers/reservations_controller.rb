@@ -12,7 +12,7 @@ class ReservationsController < ApplicationController
         @reservation.save
         if !@reservation.id
         #byebug
-        
+            
             #add flash error
         end
         redirect_to listing_path(params["listing_id"])
