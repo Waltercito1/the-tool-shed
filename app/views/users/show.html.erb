@@ -3,7 +3,7 @@
 <h2>Your Contact Information</h2>
 <p>Please review and update if necessary. This is the information other users will use to get in touch with you.</p> 
 
-<h4>Full Name: <%= current_user.first_name %> <%= current_user.last_name %></h4>
+<h4 class="bg-red-400">Full Name: <%= current_user.first_name %> <%= current_user.last_name %></h4>
 <h4>Email: <%= current_user.email %></h4>
 <h4>Address: <%= current_user.street %>, <%= current_user.city %>, <%= current_user.state %>, <%= current_user.zipcode %></h4>
 <h4>Additional Contact Information: <%= current_user.contact_info %></h4>
