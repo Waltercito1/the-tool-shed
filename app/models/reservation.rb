@@ -18,7 +18,7 @@ class Reservation < ApplicationRecord
 
     def check_out_is_after_check_in
       if check_out && check_in && check_out <= check_in
-        errors.add(:borrower_id, "Your check-out date needs to be after your check-in.")
+        errors.add(:error, "Your check-out date needs to be after your check-in.")
       end
     end
 

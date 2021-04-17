@@ -9,11 +9,14 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         @reservation.listing_id = params["listing_id"]
         @reservation.borrower_id = current_user.id
-        @reservation.save
-        if !@reservation.id
-        #byebug
-            
-            #add flash error
+        if @reservation.check_out_is_after_check_in
+            flash[:error] = @reservation.errors.full_messages.to_sentence
+            #byebug
+        else
+            @reservation.save
+            if !@reservation.id
+            flash[:error] = "Something went wrong, please try again."
+            end
         end
         redirect_to listing_path(params["listing_id"])
     end
