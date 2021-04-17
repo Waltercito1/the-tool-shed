@@ -4,15 +4,16 @@ module ApplicationHelper
         if collection.length == 0
             content_tag(:h4, "There is currently nothing to list here.", class: "no-listings")
         else
-            tag.div class: class_name(collection) do
-                render collection
-            end
+            # tag.div class: class_name(collection) do
+            #byebug    
+            render collection
+            # end
         end
     end
 
-    def class_name(collection)
-        collection.first.class == Listing ? "listing table--3cols" : "table table--3cols"
-    end
+    # def class_name(collection)
+    #     collection.first.class == Listing ? "listing table--3cols" : "table table--3cols"
+    # end
     
     def logged_in?
         !!session[:user_id]

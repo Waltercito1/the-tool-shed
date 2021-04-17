@@ -18,7 +18,11 @@
 <hr>
 
 <h2>All Your Current Listings:</h2>
-<p>Please review and confirm the reservation, or contact the person interested in borrowing your tool.</p> 
+<p>Below is a list of all tools you have listed:</p> 
 <%= display_list_conditionally(current_user.open_listings) %>
+<hr
+>
+<h2>All Tools You Rented:</h2>
+<p>You have rented <%= current_user.created_reservations.count %> tools. </p> 
 <hr>
 

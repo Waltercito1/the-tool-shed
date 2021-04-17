@@ -1,48 +1,15 @@
 <%= conditional_errors(@user) %>
 
-<h1>Signup</h1>
-
-<div id="signup-form" class="hide">
+<div class="new-form">
+    <header>
+        <h2>Signup</h2>
+    </header>
     <%= form_with(model: @user) do |f| %>
-        <div class="form-control">
-            <%= f.label :first_name, class: "form-label" %>
-            <%= f.text_field :first_name, class: "form-input" %>
-        </div>
-        <div class="form-control">
-            <%= f.label :last_name, class: "form-label" %>
-            <%= f.text_field :last_name, class: "form-input" %>
-        </div>
-        <div class="form-control">
-            <%= f.label :email, class: "form-label" %>
-            <%= f.email_field :email, class: "form-input" %>
-        </div><br>
-        <div class="form-control">
-            <%= f.label :street, class: "form-label" %>
-            <%= f.text_field :street, class: "form-input" %>
-        </div>
-        <div class="form-control">
-            <%= f.label :city, class: "form-label" %>
-            <%= f.text_field :city, class: "form-input" %>
-        </div>
-        <div class="form-control">
-            <%= f.label :state, class: "form-label" %>
-            <%= f.text_field :state, class: "form-input" %>
-        </div>
-        <div class="form-control">
-            <%= f.label :zipcode, class: "form-label" %>
-            <%= f.number_field :zipcode, class: "form-input" %>
-        </div><br>
-        <div class="form-control">
-            <%= f.label :password, class: "form-label" %>
-            <%= f.password_field :password, class: "form-input" %>
-        </div>
-        <div class="form-control">
-            <%= f.label "Confirm Password:", class: "form-label" %>
-            <%= f.password_field :password_confirmation, class: "form-input" %>
-        </div>
-        
-        <div class="form-button"><%= f.submit :create %></div>
-    <% end %>
-    Already have an account? <%= link_to "Log in", login_path, class: "show-login"%> here.
+        <%= render partial: "form", locals: {f: f} %>
+           
+    <div class="form-button"><%= f.submit %></div>
+<% end %>
 
+<div>
+    Already have an account? <%= link_to "Log in", login_path, class: "show-login"%> here.
 </div>
