@@ -27,7 +27,7 @@
     </dl>
     <div class="flex space-x-3 mb-4 text-sm font-medium">
         <div class="flex-auto flex space-x-3">
-        <button class="w-1/4 flex items-center justify-center rounded-md border border-gray-300" type="link">Edit Profile</button>
+        <button class="w-1/4 flex items-center justify-center rounded-md border border-gray-300" type="button" >Edit Profile</button>
 <%= link_to "Edit Profile", edit_user_path %>
         </div>
     </div>
@@ -90,3 +90,4 @@
     <h2>All Tools You Rented:</h2>
     <p>You have rented <%= current_user.created_reservations.count %> tools. </p> 
     <hr>
+
