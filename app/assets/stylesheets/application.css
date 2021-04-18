@@ -33,7 +33,7 @@ ul.nav-bar {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #323264;
+    background-color: hsl(180, 54%, 30%);
     width: 100%;
  }
  

@@ -1,3 +1,24 @@
+<!-- This example requires Tailwind CSS v2.0+ -->
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      <%= current_user.full_name %>'s Dashboard
+    </h3>
+    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+      Please review and update your contact information to ensure other users can get in touch with you.
+    </p>
+  </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-900">
+          Email: <p class="text-sm font-medium text-blue-700"><%= current_user.email %> </p>
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
 <h1><%= current_user.first_name %>'s Dashboard</h1>
 <h4><%= link_to "Create a New Listing", new_listing_path %></h4>
 <h2>Your Contact Information</h2>
@@ -9,7 +30,7 @@
 <h4>Additional Contact Information: <%= current_user.contact_info %></h4>
 
 <%= link_to "Edit Profile", edit_user_path %>
-<%= button_to "Log out", logout_path %>
+
 <hr>
 
 <h2>Listings That Need Your Immediate Attention:</h2>
@@ -25,4 +46,42 @@
 <h2>All Tools You Rented:</h2>
 <p>You have rented <%= current_user.created_reservations.count %> tools. </p> 
 <hr>
+
+<section class="px-4 sm:px-6 lg:px-4 xl:px-6 pt-4 pb-4 sm:pb-6 lg:pb-4 xl:pb-6 space-y-4">
+  <header class="flex items-center justify-between">
+    <h2 class="text-lg leading-6 font-medium text-black">Your Dashboard</h2>
+  </header>
+  <form class="relative">
+    <svg width="20" height="20" fill="currentColor" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" />
+    </svg>
+    <input class="focus:border-light-blue-500 focus:ring-1 focus:ring-light-blue-500 focus:outline-none w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-10" type="text" aria-label="Filter projects" placeholder="Filter projects" />
+  </form>
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
+    <li x-for="item in items">
+      <a :href="item.url" class="hover:bg-light-blue-500 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200">
+        <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
+          <div>
+            <dt class="sr-only">Title</dt>
+            <dd class="group-hover:text-white leading-6 font-medium text-black">
+              {item.title}
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Category</dt>
+            <dd class="group-hover:text-light-blue-200 text-sm font-medium sm:mb-4 lg:mb-0 xl:mb-4">
+              {item.category}
+            </dd>
+          </div>
+          
+        </dl>
+      </a>
+    </li>
+    <li class="hover:shadow-lg flex rounded-lg">
+      <a href="/listings/new" class="hover:border-gray-200 hover:shadow-xs w-full flex items-center justify-center rounded-lg border-2 border-gray-200 text-sm font-medium py-4">
+        Create a New Listing
+      </a>
+    </li>
+  </ul>
+</section>
 

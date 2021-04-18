@@ -1,50 +1,119 @@
 <%= conditional_errors(@listing) %> <%# need to test %>
 
-<h1><%= @listing.title %></h1>
-<p class="listing-category">Tool Owner: <%= @listing.lender.full_name %></p>
-<p class="listing-category">Category: <%= @listing.category %></p>
-<p class="listing-description">Description: <%= @listing.description %></p>
-<p class="listing-price">Cost per day: $<%= @listing.price %></p>
-
-<p class="listing-reservations">Number of pending reservations: <%= @listing.reservations.length %></p>
-
-<% if current_user.id == @listing.lender.id %>
-    <p><%= link_to "Edit", edit_listing_path %> OR <%= button_to "Delete", @listing, method: "delete", data: {confirm: "Are you sure???"} %></p>
-    <p><%= link_to "Back to All Listings", listings_path %></p>
-<% end %>
-<hr>
-<% if @listing.reservations.length > 0 %>
-    <h4 class="reservation-details">Reservation Details:</h4>
-        <% @listing.reservations.each do |r| %>
-            <p class="listing-borrower"><strong>Made on:</strong> <%= r.created_at.try(:strftime, "%A, %d %b %Y %l:%M %p") %>. <strong>Status:</strong> <%= r.status %>.</p>
-            <p class="listing-borrower"><strong>Interested Party:</strong> <%= r.borrower.first_name %>, <%= r.borrower.last_name %>.</p>
-            <p class="listing-borrower"><strong>Dates requested:</strong> From <%= r.check_in.strftime("%A, %B %e, %Y") %> to <%= r.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= r.duration %> day(s).</p>
-            <p class="listing-borrower"><strong>Address:</strong> <%= r.borrower.street %>, <%= r.borrower.city %>, <%= r.borrower.state %>, <%= r.borrower.zipcode %></p>
-            <p class="listing-borrower"><strong>Email:</strong> <%= mail_to r.borrower.email %></p>
-            <p class="listing-borrower"><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p>
-            
-            <% if current_user.id == @listing.lender.id %>
-                <%= form_with(url: '/confirm_reservation') do |f| %>
-                    <%= hidden_field :reservation_id, r.id %>
-                    <%= f.submit format_button(r) %></h4>
-                <% end %> 
-            <% end %>
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-lg leading-6 font-medium text-gray-900">
+      <%= @listing.title %> 
+    </h3>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Category
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <%= @listing.category %>
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Tool Owner
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <%= @listing.lender.full_name %>
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Description
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <%= @listing.description %>
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-500">
+          Cost per day
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          $<%= @listing.price %>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+    <div> 
+        <% if current_user.id == @listing.lender.id %>
+            <p><%= link_to "Edit", edit_listing_path %> OR <%= button_to "Delete", @listing, method: "delete", data: {confirm: "Are you sure???"} %></p>
+    </div>
+    <div class="flex space-x-3 mb-4 text-sm font-medium">
+        <div class="flex-auto flex space-x-3">
+        <button class="w-1/2 flex items-center justify-center rounded-md border border-gray-300" type="link">Edit Listing</button>
+        <button class="w-1/2 flex items-center justify-center rounded-md bg-black text-white" type="button">Delete Listing</button>
+        </div>
+    </div>
+    <% end %>
+<br>
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-green-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-900">
+            Number of reservations requests for this tool that are pending review: 
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          <%= @listing.reservations.length %>
+        </dd>
+      </div>
+        
+        <% if @listing.reservations.length > 0 %>
+        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-sm font-medium text-gray-900">
+        Reservation Details:
+        </dt>
+        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+        
+            <% @listing.reservations.each do |r| %>
+                    <p ><strong>Made on:</strong> <%= r.created_at.try(:strftime, "%A, %d %b %Y") %> <strong>By:</strong> <%= r.borrower.full_name %> </p>
+                    <p><strong>Status:</strong> <%= r.status %>.</p>
+                    <p><strong>Dates requested:</strong> <%= r.check_in.strftime("%A, %B %e, %Y") %> to <%= r.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= r.duration %> day(s).</p>
+                    <p><strong>Address:</strong> <%= r.borrower.street %>, <%= r.borrower.city %>, <%= r.borrower.state %>, <%= r.borrower.zipcode %></p>
+                    <p><strong>Email:</strong> <%= mail_to r.borrower.email %></p>
+                    <p><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p>
+                    
+                    <% if current_user.id == @listing.lender.id %>
+                        <%= form_with(url: '/confirm_reservation') do |f| %>
+                            <%= hidden_field :reservation_id, r.id %>
+                            <%= f.submit format_button(r) %></h4>
+                        <% end %> 
+                    <% end %>
+                <% end %>
+        <% else %>
+            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt class="text-sm font-medium text-gray-900">
+            This listing is fully available to rent.
+            </dt>
         <% end %>
-<% else %>
-    <p class="reservation-details">This listing is fully available to rent.</p>
+        </dd>
+    </dl>
+  </div>
+</div>
+<br>
+
+<% if !current_user %> 
+    <%= form_with(model: [@listing, @listing.reservations.build]) do |f| %>
+            <div class="form-input">
+                <%= f.label :pick_up_date %>
+                <%= f.date_field :check_in %>
+            </div>
+            <div class="form-input">
+                <%= f.label :return_date %>
+                <%= f.date_field :check_out %>
+            </div>
+            <%= f.submit "Reserve this Tool" %></h4>
+    <% end %><br>
 <% end %>
-<hr>
 
-<%= form_with(model: [@listing, @listing.reservations.build]) do |f| %>
-        <div class="form-input">
-            <%= f.label :pick_up_date %>
-            <%= f.date_field :check_in %>
-        </div>
-        <div class="form-input">
-            <%= f.label :return_date %>
-            <%= f.date_field :check_out %>
-        </div>
-        <%= f.submit "Reserve this Tool" %></h4>
-<% end %><br>
 
-<%= link_to "Check out all listed tools", listings_path %>
+
