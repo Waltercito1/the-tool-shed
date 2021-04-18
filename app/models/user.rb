@@ -22,6 +22,10 @@ class User < ApplicationRecord
         self.first_name.capitalize + " " + self.last_name.capitalize
     end
 
+    def full_address
+        self.street.titleize + ", " + self.city.capitalize + ", " + self.state.upcase + " " + self.zipcode.to_s
+    end
+
     def self.from_omniauth(auth)
         self.find_or_create_by(provider: auth["provider"], uid: auth["uid"]) do |u|
             u.email = auth['info']['email']
