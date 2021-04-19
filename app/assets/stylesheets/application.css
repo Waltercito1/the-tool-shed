@@ -21,7 +21,7 @@
 }
 
 .flash_errors {
-    padding: 2px;
+    /* padding: 2px; */
     display: inline;
     color: red
 }

@@ -1,16 +1,17 @@
 <div class="form-input">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :title, :class=>"block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :title, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md", :required=>true, :placeholder=>"Tool Name / Listing Tilte / Tool Brand" %>
 </div>
 <div class="form-input">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.label :description, :class=>"block text-sm font-medium text-gray-700" %>
+    <%= f.text_area :description, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md", :required=>true, :placeholder=>"Please add as much details about the tool as possible." %>
 </div>
 <div class="form-input">
-    <%= f.label :category %>
-    <%= f.select :category, options_for_select([ "Car Mechanics", "Yard Work", "House Remodeling", "Metalworking", "Power Tools"], selected: @listing.category), include_blank: "Select a category"%>
+    <%= f.label :category, :class=>"block text-sm font-medium text-gray-700" %>
+    <%= f.select :category, options_for_select([ "Car Mechanics", "Yard Work", "House Remodeling", "Metalworking", "Power Tools"], selected: @listing.category), include_blank: "Select a category", :required=>true %>
 </div>
 <div class="form-input">
-    <%= f.label :price_per_day %>
-    <%= f.number_field :price, step: 0.01%> <br>
+    <%= f.label :price_per_day, :class=>"block text-sm font-medium text-gray-700" %>
+    <%= f.number_field :price, step: 0.01, :class=>"mt-1 block w-3/12 py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block shadow-sm sm:text-sm border border-gray-300 rounded-md", :required=>true, :placeholder=>"$" %> <br>
 </div>
+

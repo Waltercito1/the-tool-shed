@@ -85,7 +85,7 @@
                     <% if current_user.id == @listing.lender.id %>
                         <%= form_with(url: '/confirm_reservation') do |f| %>
                             <%= hidden_field :reservation_id, r.id %>
-                            <%= f.submit format_button(r) %></h4>
+                            <%= f.submit format_button(r), :class=>" py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %></h4>
                         <% end %> 
                     <% end %>
                 <% end %>

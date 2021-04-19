@@ -8,7 +8,7 @@ class Reservation < ApplicationRecord
     validates :check_in, presence: true
     validates :check_out, presence: true
     validate :available
-    validate :check_out_is_after_check_in
+    #validate :check_out_is_after_check_in
 
     def duration
         (check_out - check_in).to_i
@@ -21,7 +21,6 @@ class Reservation < ApplicationRecord
     def check_out_is_after_check_in
       if check_out && check_in && check_out <= check_in
         errors.add(:error, "Your check-out date needs to be after your check-in.")
-        #flash[:error] = "Your check-out date needs to be after your check-in."
       end
     end
 
