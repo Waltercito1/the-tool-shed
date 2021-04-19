@@ -22,7 +22,6 @@
 
 .flash_errors {
     padding: 2px;
-    /* background-color: red;*/
     display: inline;
     color: red
 }
@@ -33,7 +32,7 @@ ul.nav-bar {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: hsl(180, 54%, 30%);
+    background-color: hsl(124, 70%, 19%);
     width: 100%;
  }
  
