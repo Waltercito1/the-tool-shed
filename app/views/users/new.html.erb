@@ -1,14 +1,49 @@
 <%= conditional_errors(@user) %>
 
-<div class="new-form">
-    <header>
-        <h2>Signup</h2>
-    </header>
-    <%= form_with(model: @user) do |f| %>
-        <%= render partial: "form", locals: {f: f} %>
-           
-    <div class="form-button"><%= f.submit %></div>
+<% if flash[:messages] %>
+    <h2 class="login_signup_errors"><%= flash[:messages] %></h2>
 <% end %>
+
+<div class="min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl w-full space-y-8">
+    <div>
+      <img class="w-32 h-32 mx-auto h-14 w-auto" src="https://the-tool-shed-images.s3.us-east-2.amazonaws.com/TheToolShed-logo-600.svg" alt="Workflow">
+    </div>
+      <form action="#" method="POST" >
+      <%= form_with(model: @user) do |f| %>
+        <div class="shadow overflow-hidden sm:rounded-md">
+        <%= render partial: "form", locals: {f: f} %>
+        <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="grid grid-cols-6 gap-6">
+                <p class="col-span-6 mt-2 text-center text-sm text-gray-600">
+                Create a secure password
+                </p>
+                <div class="col-span-6 sm:col-span-3">
+                <%= f.label :password, :class=>"block text-sm font-medium text-gray-700" %>
+                <%= f.password_field :password, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+                </div>
+
+                <div class="col-span-6 sm:col-span-3">
+                <%= f.label "Confirm Password:", :class=>"block text-sm font-medium text-gray-700" %>
+                <%= f.password_field :password_confirmation, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+                </div>
+            </div>
+          </div>
+
+          <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
+            <button type="submit">
+                <%= f.submit :signup, :class=>"group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+                <% end %>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
 
 <div>
     Already have an account? <%= link_to "Log in", login_path, class: "show-login"%> here.

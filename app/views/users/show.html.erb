@@ -27,9 +27,10 @@
     </dl>
     <div class="flex space-x-3 mb-4 text-sm font-medium">
         <div class="flex-auto flex space-x-3">
-          <%= link_to "Edit Profile", edit_user_path, :class => "w-1/4 flex items-center justify-center rounded-md border border-solid border-gray-300" %>
-          <button  class="w-1/4 flex items-center justify-center rounded-md border border-gray-300" type="button" >Edit Profile</button>
+          <%= link_to "Edit Profile", edit_user_path, :class => "w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
+          <%= link_to "Delete Profile", user_path, :action=>"DELETE", :class => "w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300" %>
         </div>
+        
     </div>
   </div>
 </div>

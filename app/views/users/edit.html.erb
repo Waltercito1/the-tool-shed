@@ -4,9 +4,15 @@
     <header>
         <h2>Edit Your Information</h2>
     </header>
+
     <%= form_with(model: @user) do |f| %>
-        <%= render partial: "form", locals: {f: f} %>
-        <div class="form-button"><%= f.submit %></div>
-    <% end %>
+    <%= render partial: "form", locals: {f: f} %>
+    
+    <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
+        <button type="submit">
+            <%= f.submit %>
+            <% end %>
+        </button>
+    </div>
 </div>
 

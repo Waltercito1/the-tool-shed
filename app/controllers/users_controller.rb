@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
     before_action :redirect_if_logged_in, only: [:new]
+    before_action :find_user, only: [:edit, :update, :destroy]
     
     def new
         @user = User.new
+        #byebug
     end
 
     def create
+        #byebug
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
@@ -22,17 +25,29 @@ class UsersController < ApplicationController
     end
 
     def edit
-        find_user
+        #find_user
     end
 
     def update
-        find_user
+        #find_user
         @user.update(user_params)
         if @user.valid?
             redirect_to @user
         else
             render :edit
         end
+    end
+
+    def destroy
+        #find_user
+        if current_user.id == user.id
+            user.delete
+            flash[:success] = "User successfully deleted."
+            redirect_to "/"
+          else
+            flash[:error] = "You do not have permissions to delete this user."
+            redirect_to :back
+          end
     end
 
     private

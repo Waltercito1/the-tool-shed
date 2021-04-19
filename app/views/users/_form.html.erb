@@ -1,36 +1,39 @@
-<div class="form-control">
-    <%= f.label :first_name, class: "form-label" %>
-    <%= f.text_field :first_name, class: "form-input" %>
-</div>
-<div class="form-control">
-    <%= f.label :last_name, class: "form-label" %>
-    <%= f.text_field :last_name, class: "form-input" %>
-</div>
-<div class="form-control">
-    <%= f.label :email, class: "form-label" %>
-    <%= f.email_field :email, class: "form-input" %>
-</div><br>
-<div class="form-control">
-    <%= f.label :street, class: "form-label" %>
-    <%= f.text_field :street, class: "form-input" %>
-</div>
-<div class="form-control">
-    <%= f.label :city, class: "form-label" %>
-    <%= f.text_field :city, class: "form-input" %>
-</div>
-<div class="form-control">
-    <%= f.label :state, class: "form-label" %>
-    <%= f.text_field :state, class: "form-input" %>
-</div>
-<div class="form-control">
-    <%= f.label :zipcode, class: "form-label" %>
-    <%= f.number_field :zipcode, class: "form-input" %>
-</div><br>
-<div class="form-control">
-    <%= f.label :password, class: "form-label" %>
-    <%= f.password_field :password, class: "form-input" %>
-</div>
-<div class="form-control">
-    <%= f.label "Confirm Password:", class: "form-label" %>
-    <%= f.password_field :password_confirmation, class: "form-input" %>
+
+<div class="px-4 py-5 bg-white sm:p-6">
+    <div class="grid grid-cols-6 gap-6">
+        <div class="col-span-6 sm:col-span-3">
+        <%= f.label :first_name, :class=>"block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :first_name, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md", :required=>true %>
+        </div>
+
+        <div class="col-span-6 sm:col-span-3">
+        <%= f.label :last_name, :class=>"block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :last_name, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md", :required=>true %>
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+        <%= f.label :email, :class=>"block text-sm font-medium text-gray-700" %>
+        <%= f.email_field :email, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md", :required=>true %>
+        </div>
+
+        <div class="col-span-6">
+        <%= f.label :street, :class=>"block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :street, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+        </div>
+
+        <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+        <%= f.label :city, :class=>"block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :city, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+        </div>
+
+        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+        <%= f.label :state, :class=>"block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :state, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+        </div>
+
+        <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+        <%= f.label :zipcode, :class=>"block text-sm font-medium text-gray-700" %>
+        <%= f.number_field :zipcode, :class=>"mt-1 block w-full py-2 px-3 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" %>
+        </div>
+    </div>
 </div>
