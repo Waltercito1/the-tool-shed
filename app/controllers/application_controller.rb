@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
         current_user.is_lender = true
     end
 
+    # def check_if_listing_available(start_date, end_date)
+    #     Listing.available(start_date, end_date)
+    # end
+
 end

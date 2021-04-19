@@ -18,16 +18,13 @@
               <th scope="col" class="px-6 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Price
               </th>
-              <th scope="col" class="relative px-6 py-3">
-                <span class="sr-only">Edit</span>
-              </th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             <tr>
               <td class="max-w-xs px-6 py-4 whitespace-nowrap">                  
-                <div class="w-32 min-w-full ml-4">
-                    <div class="text-sm font-medium text-gray-900">
+                <div class="w-32 min-w-0 ml-4">
+                    <div class="text-sm font-medium text-center md:text-left text-gray-900">
                         <a href="/listings/<%=listing.id %>" class="text-indigo-600 hover:text-indigo-900"><%= listing.title %></a>
                     </div>
                     <div class="text-sm text-gray-500">
@@ -40,7 +37,6 @@
                     <%= listing.category %>
                 </div>
               </td>
-              
               <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 $<%= listing.price %>
               </td>

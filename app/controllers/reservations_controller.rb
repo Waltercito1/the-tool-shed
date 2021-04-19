@@ -13,6 +13,8 @@ class ReservationsController < ApplicationController
             flash[:error] = @reservation.errors.full_messages.to_sentence
             #byebug
         else
+            #Listing.available(@reservation.check_in, @reservation.check_out)
+            #byebug
             @reservation.save
             if !@reservation.id
             flash[:error] = "Something went wrong, please try again."
