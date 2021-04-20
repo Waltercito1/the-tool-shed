@@ -23,7 +23,7 @@ class User < ApplicationRecord
     end
 
     def full_address
-        self.street.titleize + ", " + self.city.capitalize + ", " + self.state.upcase + " " + self.zipcode.to_s
+        self.street.try(:titleize) + ", " + self.city.capitalize + ", " + self.state.upcase + " " + self.zipcode.to_s
     end
 
     def self.from_omniauth(auth)

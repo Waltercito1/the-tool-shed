@@ -7,9 +7,9 @@
 <div class="min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl w-full space-y-8">
     <div>
-      <img class="w-32 h-32 mx-auto h-14 w-auto" src="https://the-tool-shed-images.s3.us-east-2.amazonaws.com/TheToolShed-logo-600.svg" alt="Workflow">
+      <img class="w-32 h-32 mx-auto h-14 w-auto" src="https://the-tool-shed-images.s3.us-east-2.amazonaws.com/TheToolShed-logo-600.svg" alt="TheToolShed">
     </div>
-      <form action="#" method="POST" >
+   
       <%= form_with(model: @user) do |f| %>
         <div class="shadow overflow-hidden sm:rounded-md">
         <%= render partial: "form", locals: {f: f} %>
@@ -37,7 +37,7 @@
             </button>
           </div>
         </div>
-      </form>
+
       <p class="col-span-6 mt-2 text-center text-sm text-gray-600">
         Already have an account? <%= link_to "Log in", login_path, class: "show-login" %> here.
       </p>

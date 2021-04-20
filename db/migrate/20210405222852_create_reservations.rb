@@ -5,8 +5,8 @@ class CreateReservations < ActiveRecord::Migration[6.1]
       t.date :check_out
       t.decimal :deposit, :precision => 8, :scale => 2
       t.string :status, default: "Pending"
-      t.belongs_to :listing
-      t.belongs_to :borrower
+      t.belongs_to :listing #, foreign_key: {on_delete: :cascade}
+      t.belongs_to :borrower #, foreign_key: {on_delete: :cascade}
 
       t.timestamps
     end

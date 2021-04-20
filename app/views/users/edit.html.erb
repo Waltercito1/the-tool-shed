@@ -1,17 +1,20 @@
 <%= conditional_errors(@user) %>
 
-<div class="new-form">
-    <header>
-        <h2>Edit Your Information</h2>
-    </header>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow overflow-hidden sm:rounded-lg">
+    <div class="mt-6 max-w-8xl w-full px-4 py-5 sm:px-6">
+        <div class="text-2xl leading-6 font-medium text-gray-900">
+            <header>
+                <h2>Edit Your Information</h2>
+            </header>
+        </div>
 
-    <div class="px-4 py-3 bg-gray-50 text-center sm:px-6">
-        <%= form_with(model: @user) do |f| %>
-        <%= render partial: "form", locals: {f: f} %>
-        <button type="submit">
-            <%= f.submit %>
-            <% end %>
-        </button>
+        <div class="mt-6 px-4 py-3 bg-gray-50 text-center sm:px-6">
+            <%= form_with(model: @user) do |f| %>
+            <%= render partial: "form", locals: {f: f} %>
+            <button type="submit">
+                <%= f.submit %>
+                <% end %>
+            </button>
+        </div>
     </div>
 </div>
-

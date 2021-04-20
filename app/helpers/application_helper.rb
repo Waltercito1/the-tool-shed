@@ -2,7 +2,7 @@ module ApplicationHelper
 
     def display_list_conditionally(collection)
         if collection.length == 0
-            content_tag(:h4, "There is currently nothing to list here.", class: "no-listings")
+            content_tag(:h4, "There is currently nothing to list here.", class:"ml-3 mb-3 max-w-2xl text-sm text-red-700")
         else
             # tag.div class: class_name(collection) do
             #byebug    
