@@ -72,7 +72,18 @@
           <%= l.description %> 
         </dd>
       </div>
-        <%= link_to "Delete Reservation", l.reservations.first, method: "delete", data: {confirm: "Are you sure???"}, class:"w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300"  %>
+      <div class="flex space-x-3 mb-4 text-sm font-medium">
+      <% if l.reservations.first.check_out > Date.today %>
+        <div class="flex-auto flex space-x-3">
+            <%= link_to "Edit Reservation", l.reservations.first, url:"/reservations/#{l.reservations.first.id}/edit", class:"w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
+            <%= link_to "Delete Reservation", l.reservations.first, method: "delete", data: {confirm: "Are you sure???"}, class:"w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300"  %>
+        </div>
+      <% else %>
+        <div class="flex-auto flex space-x-3">
+            <p class="w-1/4 flex items-center justify-center rounded-md bg-blue-300 border border-solid border-green-300"><%= "Write a Review" %>
+        </div>
+      </div>
+      <% end %>
     </dl>
   </div>
 </div>
