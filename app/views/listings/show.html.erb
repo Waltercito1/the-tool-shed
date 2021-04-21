@@ -74,7 +74,7 @@
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
         
             <% @listing.reservations.each do |r| %>
-                    <p ><strong>Made on:</strong> <%= r.created_at.try(:strftime, "%A, %d %b %Y") %> <strong>By:</strong> <%= r.borrower.full_name %> </p>
+                    <p ><strong>Made by:</strong> <%= r.borrower.full_name %> </p>
                     <p><strong>Status:</strong> <%= r.status %>.</p>
                     <p><strong>Dates requested:</strong> <%= r.check_in.strftime("%A, %B %e, %Y") %> to <%= r.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= r.duration %> day(s).</p>
                     <p><strong>Address:</strong> <%= r.borrower.full_address %></p>

@@ -9,9 +9,9 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         @reservation.listing_id = params["listing_id"]
         @reservation.borrower_id = current_user.id
+        #byebug
         if @reservation.check_out_is_after_check_in
             flash[:error] = @reservation.errors.full_messages.to_sentence
-            #byebug
         else
             #byebug
             @reservation.save
@@ -26,15 +26,21 @@ class ReservationsController < ApplicationController
     end
 
     def index
-        #@reservations = current_user.created_reservations
-        @listings = []
-        Listing.all.each do |l|
-            l.reservations.each do |r|
-                if r.borrower_id == current_user.id
-                    @listings << l
-                end
-            end
+        if params[:listing_id]
+            #byebug
+            @reservations = Reservation.where("borrower_id = ? and listing_id = ?", current_user.id, params[:listing_id])
+        else
+            @reservations = current_user.created_reservations
         end
+
+            # @listings = []
+        # Listing.all.each do |l|
+        #     l.reservations.each do |r|
+        #         if r.borrower_id == current_user.id
+        #             @listings << l
+        #         end
+        #     end
+        # end
         #byebug
     end
 

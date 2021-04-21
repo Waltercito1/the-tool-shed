@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
 
   resources :reviews
-  resources :reservations#, only: [:index, :show, :edit]
+  resources :reservations, only: [:index, :new, :create]
   resources :listings do
     resources :reservations, shallow: true
   end
