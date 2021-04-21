@@ -48,7 +48,7 @@ class ReservationsController < ApplicationController
     def update
         @reservation.update(reservation_params)
         if @reservation.valid?
-            redirect_to @reservation #need to fix redirect_to current_user dashboard
+            redirect_to @reservation 
         else
             render :edit
         end

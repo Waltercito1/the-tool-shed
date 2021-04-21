@@ -45,15 +45,13 @@
 
 
     <div> 
-        <% if current_user.id == @listing.lender.id %>
-            <p><%= link_to "Edit", edit_listing_path %> OR <%= button_to "Delete", @listing, method: "delete", data: {confirm: "Are you sure???"} %></p>
-    </div>
-    <div class="flex space-x-3 mb-4 text-sm font-medium">
-        <div class="flex-auto flex space-x-3">
-        <button class="w-1/2 flex items-center justify-center rounded-md border border-gray-300" type="button">Edit Listing</button>
-        <button class="w-1/2 flex items-center justify-center rounded-md bg-black text-white" type="button">Delete Listing</button>
-        </div>
-    </div>
+    <% if current_user.id == @listing.lender.id %>
+      <div class="flex space-x-3 mb-4 text-sm font-medium">
+          <div class="flex-auto flex space-x-3">
+            <%= link_to "Edit Listing", edit_listing_path, class:"w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
+            <%= link_to "Delete Listing", @listing, method:"DELETE", data: {confirm: "Are you sure???"}, class:"w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300" %>
+          </div>
+      </div>
     <% end %>
 <br>
 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
