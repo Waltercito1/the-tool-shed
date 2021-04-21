@@ -23,6 +23,7 @@
       <li class="nav-bar-float-right"> <%= link_to 'Sign Up', signup_path %> </li>
     <% else %>
       <li class="nav-bar"> <%= link_to 'Your Dashboard', current_user %> </li>
+      <li class="nav-bar"> <%= link_to 'Your Reservations', reservations_path %> </li>
       <li class="nav-bar-float-right"> <%= link_to "Logout", logout_path, method: "post" %> </li>
       <li class="nav-bar-float-right"> <%= link_to current_user.full_name%> </li>
     <% end %>

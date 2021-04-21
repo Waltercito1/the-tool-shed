@@ -26,7 +26,16 @@ class ReservationsController < ApplicationController
     end
 
     def index
-        @reservations = Reservation.all
+        @reservations = current_user.created_reservations
+        @listings = []
+        Listing.all.each do |l|
+            l.reservations.each do |r|
+                if r.borrower_id == current_user.id
+                    @listings << l
+                end
+            end
+        end
+        #byebug
     end
 
     def show

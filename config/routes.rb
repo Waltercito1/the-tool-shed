@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   #get '/login', to: 'sessions#new'
 
   resources :reviews
-  #resources :reservations
+  resources :reservations#, only: [:index, :show, :edit]
   resources :listings do
     resources :reservations, shallow: true
   end
