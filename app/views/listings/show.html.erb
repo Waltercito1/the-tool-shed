@@ -81,7 +81,7 @@
                     <p><strong>Dates requested:</strong> <%= r.check_in.strftime("%A, %B %e, %Y") %> to <%= r.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= r.duration %> day(s).</p>
                     <p><strong>Address:</strong> <%= r.borrower.full_address %></p>
                     <p><strong>Email:</strong> <%= mail_to r.borrower.email %></p>
-                    <p><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p>
+                    <p><strong>Total cost to the borrower:</strong> $<%= r.total_price %></p><br>
                     
                     <% if current_user.id == @listing.lender.id %>
                         <%= form_with(url: '/confirm_reservation') do |f| %>
