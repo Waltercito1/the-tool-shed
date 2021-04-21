@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     end
 
     def create
-      ##byebug
         user = User.find_by_email(params[:user][:email])
         if user && user.authenticate(params[:user][:password])
           session[:user_id] = user.id
@@ -18,7 +17,6 @@ class SessionsController < ApplicationController
 
     def omniauth
       @user = User.from_omniauth(auth)
-      #byebug
       if @user.valid?
         session[:user_id] = @user.id
         redirect_to @user

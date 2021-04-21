@@ -4,11 +4,9 @@ class UsersController < ApplicationController
     
     def new
         @user = User.new
-        #byebug
     end
 
     def create
-        #byebug
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
@@ -20,16 +18,13 @@ class UsersController < ApplicationController
 
     def show
         redirect_if_not_logged_in
-        #current_user
         find_user
     end
 
     def edit
-        #find_user
     end
 
     def update
-        #find_user
         @user.update(user_params)
         if @user.valid?
             redirect_to @user

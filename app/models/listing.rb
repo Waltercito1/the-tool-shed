@@ -4,7 +4,7 @@ class Listing < ApplicationRecord
     has_many :reviews, :through => :reservations
     has_many :borrowers, :class_name => "User", :through => :reservations
 
-    validates :title,  presence: true #, length: {minimum: 8}
+    validates :title,  presence: true 
     validates :category, presence: true
     validates :price, presence: true
 
