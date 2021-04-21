@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
     end
 
     def index
-        @reservations = current_user.created_reservations
+        #@reservations = current_user.created_reservations
         @listings = []
         Listing.all.each do |l|
             l.reservations.each do |r|
