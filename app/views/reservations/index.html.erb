@@ -1,4 +1,3 @@
-
 <% @listings.each do |l| %>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow overflow-hidden sm:rounded-lg">
@@ -73,7 +72,7 @@
           <%= l.description %> 
         </dd>
       </div>
-            
+        <%= link_to "Delete Reservation", l.reservations.first, method: "delete", data: {confirm: "Are you sure???"}, class:"w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300"  %>
     </dl>
   </div>
 </div>

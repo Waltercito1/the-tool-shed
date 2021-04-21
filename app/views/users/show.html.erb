@@ -28,7 +28,7 @@
     <div class="flex space-x-3 mb-4 text-sm font-medium">
         <div class="flex-auto flex space-x-3">
           <%= link_to "Edit Profile", edit_user_path, :class => "w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
-          <%= link_to "Delete Profile", user_path, :action=>"DELETE", :class => "w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300" %>
+          <%= link_to "Delete Profile", user_path, method:"DELETE", data: {confirm: "Are you sure???"}, :class => "w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300" %>
           <%= button_to "Delete", @user, method: "delete", data: {confirm: "Are you sure???"} %></p>
         </div>
         

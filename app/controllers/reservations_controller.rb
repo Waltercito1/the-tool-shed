@@ -58,6 +58,12 @@ class ReservationsController < ApplicationController
         change_reservation_status(params)
     end
 
+    def destroy
+        find_reservation.delete
+        flash[:success] = "Reservation deleted successfully"
+        redirect_to reservations_path
+    end
+
     private
 
     def reservation_params
