@@ -1,10 +1,9 @@
-<% @reservations.each do |l| %>
-<% byebug %>
+<% @reservations.each do |r| %>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
     <h3 class="mt-6 text-2xl leading-6 font-medium text-gray-900">
-      <%= l.title %> 
+      <%= r.listing.title %> 
     </h3>
   </div>
   <div class="mb-8 pb-8 border-t border-gray-200">
@@ -14,7 +13,7 @@
           Tool Owner
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          <%= l.lender.full_name %>
+          <%= r.listing.lender.full_name %>
         </dd>
       </div>
       <div class="bg-white px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -22,7 +21,7 @@
           Contact email:
         </dt>
         <dd class="mt-1 text-sm text-blue-700 sm:mt-0 sm:col-span-2">
-          <%= l.lender.email %>
+          <%= r.listing.lender.email %>
         </dd>
       </div>
       <div class="bg-gray-50 px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -30,7 +29,7 @@
           Tool pick up address (unless arrenged otherwise):
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          <%= l.lender.full_address %>
+          <%= r.listing.lender.full_address %>
         </dd>
       </div>
       <div class="bg-white px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -38,7 +37,7 @@
           Reservation status:
         </dt>
         <dd class="mt-1 text-sm text-red-900 sm:mt-0 sm:col-span-2">
-          <%= l.reservations.first.status %>
+          <%= r.status %>
         </dd>
       </div>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -46,7 +45,7 @@
           Dates requested:
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          <p><%= l.reservations.first.check_in.strftime("%A, %B %e, %Y") %><strong> to </strong><%= l.reservations.first.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= l.reservations.first.duration %> day(s).</p>
+          <p><%= r.check_in.strftime("%A, %B %e, %Y") %><strong> to </strong><%= r.check_out.strftime("%A, %B %e, %Y") %>. <strong>Duration:</strong> <%= r.duration %> day(s).</p>
         </dd>
       </div>
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -54,7 +53,7 @@
           Cost per day
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-         $<%= l.price %><p><strong> Total cost:</strong> $<%= l.reservations.first.total_price %></p>
+         $<%= r.listing.price %><p><strong> Total cost:</strong> $<%= r.total_price %></p>
         </dd><hr>
       </div>
       <div class="bg-white px-4 py-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -62,7 +61,7 @@
           Tool Category:
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          <%= l.category %>
+          <%= r.listing.category %>
         </dd>
       </div>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -70,18 +69,18 @@
           Description:
         </dt>
         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          <%= l.description %> 
+          <%= r.listing.description %> 
         </dd>
       </div>
       <div class="flex space-x-3 mb-4 text-sm font-medium">
-      <% if l.reservations.first.check_out > Date.today %>
+      <% if r.check_out > Date.today %>
         <div class="flex-auto flex space-x-3">
-            <%= link_to "Edit Reservation", l.reservations.first, url:"/reservations/#{l.reservations.first.id}/edit", class:"w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
-            <%= link_to "Delete Reservation", l.reservations.first, method: "delete", data: {confirm: "Are you sure???"}, class:"w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300"  %>
+            <%= link_to "Edit Reservation", r, url:"/reservations/#{r.id}/edit", class:"w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
+            <%= link_to "Delete Reservation", r, method: "delete", data: {confirm: "Are you sure???"}, class:"w-1/4 flex items-center justify-center rounded-md bg-red-300 border border-solid border-red-300"  %>
         </div>
       <% else %>
         <div class="flex-auto flex space-x-3">
-            <%= link_to "Write a Review", l.reservations.first, url:"/reservations/#{l.reservations.first.id}/edit", class:"w-1/4 flex items-center justify-center rounded-md bg-blue-300 border border-solid border-blue-300" %>
+            <%= link_to "Write a Review", r.listing, url:"/listings/#{r.listing.id}/review/new", class:"w-1/4 flex items-center justify-center rounded-md bg-blue-300 border border-solid border-blue-300" %>
             
         </div>
       </div>
