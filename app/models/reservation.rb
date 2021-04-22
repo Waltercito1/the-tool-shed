@@ -4,13 +4,13 @@ class Reservation < ApplicationRecord
     has_one :review
     
     scope :pending_approval, -> { where status: "Pending"}
+    scope :reservations_of_listing, -> (current_user_id, params_listing_id) {where("borrower_id = ? and listing_id = ?", "#{current_user_id}", "#{params_listing_id}").order(:title)}
 
     validates :check_in, presence: true
     validates :check_out, presence: true
     validate :available
     validate :check_out_is_after_check_in
 
-    scope :reservations_of_listing, -> (current_user_id, params_listing_id) {where("borrower_id = ? and listing_id = ?", "#{current_user_id}", "#{params_listing_id}").order(:title)}
     
     def duration
         (check_out - check_in).to_i

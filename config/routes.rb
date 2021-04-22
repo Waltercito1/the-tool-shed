@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   resources :users
   resources :listings do
     resources :reservations, shallow: true
+    resources :reviews, shallow: true
   end
   resources :reservations, only: [:index, :new, :create]
-  resources :reviews
-  
+  resources :reviews, only: [:index, :new, :create]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
