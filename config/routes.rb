@@ -14,12 +14,12 @@ Rails.application.routes.draw do
 
   root 'sessions#new'
 
-
-  resources :reviews
-  resources :reservations, only: [:index, :new, :create]
+  resources :users
   resources :listings do
     resources :reservations, shallow: true
   end
-  resources :users
+  resources :reservations, only: [:index, :new, :create]
+  resources :reviews
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
