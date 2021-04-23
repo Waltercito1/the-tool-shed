@@ -4,7 +4,7 @@
     <header>
         <h2>Create a New Reservation</h2>
     </header>
-    <%= form_with(model: @reservation) do |f| %>
+    <%= form_with(model: [@reservation.listing, @reservation]) do |f| %>
         <%= render partial: "form", locals: {f: f} %>
     <div class="form-button"><%= f.submit %></div>
 <% end %>

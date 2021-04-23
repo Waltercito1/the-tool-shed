@@ -1,8 +1,10 @@
 class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:show, :edit, :update, :destroy]
     
-    def new 
-        @reservation = Reservation.new
+    def new
+        if params[:listing_id]
+           @reservation = Reservation.new(listing_id: params[:listing_id])
+        end
     end
 
     def create
@@ -10,19 +12,13 @@ class ReservationsController < ApplicationController
         @reservation.listing_id = params["listing_id"]
         @reservation.borrower_id = current_user.id
         #byebug
-        if @reservation.check_out_is_after_check_in
-            flash[:error] = @reservation.errors.full_messages.to_sentence
+        if @reservation.save
+            redirect_to @reservation
         else
-            #byebug
-            @reservation.save
-            if !@reservation.id
-                flash[:error] = "Something went wrong, please try again."
-            end
+            @listing = Listing.find_by_id(params["listing_id"])
+            render :"listings/show"
         end
-        # if !@reservation.id
-        #     flash[:error] = "Something went wrong, please try again."
-        # end
-        redirect_to listing_path(params["listing_id"])
+
     end
 
     def index
