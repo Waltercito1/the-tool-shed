@@ -1,4 +1,4 @@
-
+<%= conditional_errors(@reservation) %>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
@@ -104,10 +104,10 @@
 <% end %>
 
 <% if @listing.lender != current_user %> 
-<div class="flex-auto flex space-x-3">
-    <%= link_to "Create a reservation", new_listing_reservation_path(@listing),  class:"w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
-    <%= link_to "View all your reservations of this tool", listing_reservations_path(@listing),  class:"w-1/4 flex items-center justify-center rounded-md bg-blue-300 border border-solid border-blue-300" %>
-</div>
+  <div class="mb-6 flex-auto flex space-x-3">
+      <%= link_to "Make a reservation", new_listing_reservation_path(@listing),  class:"w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
+      <%= link_to "View all your reservations of this tool", listing_reservations_path(@listing),  class:"w-1/4 flex items-center justify-center rounded-md bg-blue-300 border border-solid border-blue-300" %>
+  </div>
 <% end %>
 
 

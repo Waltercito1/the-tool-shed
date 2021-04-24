@@ -1,4 +1,5 @@
 <%= conditional_errors(@listing) %>
+
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white shadow overflow-hidden sm:rounded-lg">
     <div class="max-w-8xl w-full px-4 py-5 sm:px-6">
         <h3 class="mt-6 text-2xl leading-6 font-medium text-gray-900">
@@ -8,7 +9,7 @@
                 <%= form_with(model: @listing) do |f| %>
                 <%= render partial: "form", locals: {f: f} %>
             
-            <div class="form-button">
+            <div class="m-6 flex-auto flex space-x-3">
                 <%= f.submit %>
             </div>
             <% end %>

@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_logged_in
     
     def new
         if params[:listing_id]

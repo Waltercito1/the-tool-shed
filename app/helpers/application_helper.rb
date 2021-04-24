@@ -3,17 +3,10 @@ module ApplicationHelper
     def display_list_conditionally(collection)
         if collection.length == 0
             content_tag(:h4, "There is currently nothing to list here.", class:"ml-3 mb-3 max-w-2xl text-sm text-red-700")
-        else
-            # tag.div class: class_name(collection) do
-            #byebug    
+        else  
             render collection
-            # end
         end
     end
-
-    # def class_name(collection)
-    #     collection.first.class == Listing ? "listing table--3cols" : "table table--3cols"
-    # end
     
     def logged_in?
         !!session[:user_id]
@@ -32,8 +25,9 @@ module ApplicationHelper
     end
     
     def conditional_errors(object)
-        #byebug
+        if object != nil
         render partial: "listings/errors", locals: {object: object} if object.errors.any?
+        end
     end
     
     def reservations_pending_approval
