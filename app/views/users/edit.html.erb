@@ -11,10 +11,8 @@
         <div class="mt-6 px-4 py-3 bg-gray-50 text-center sm:px-6">
             <%= form_with(model: @user) do |f| %>
             <%= render partial: "form", locals: {f: f} %>
-            <button type="submit">
-                <%= f.submit %>
-                <% end %>
-            </button>
+            <%= f.submit %>
+            <% end %>
         </div>
     </div>
 </div>

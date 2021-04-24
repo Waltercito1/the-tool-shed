@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
     validates :first_name,  presence: true
     validates :last_name,  presence: true
-    validates :email,  presence: true
+    validates :email,  presence: true, uniqueness: true, format: {with: /\A(?<username>[^@\s]+)@((?<domain_name>[-a-z0-9]+)\.(?<domain>[a-z]{2,}))\z/i}
 
     def full_name
         self.first_name.capitalize + " " + self.last_name.capitalize
