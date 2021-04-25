@@ -2,11 +2,24 @@ class ReviewsController < ApplicationController
     before_action :find_review, only: [:show, :index]
 
     def new
-        @review = Review.new
+        if params[:listing_id]
+            @review = Review.new(listing_id: params[:listing_id])
+        end
     end
 
     def create
         @review = Review.create(review_params)
+        @review.listing_id = params["listing_id"]
+        @review.borrower_id = current_user.id
+        @review.reservation_id = @review.listing.reservations.find_by(borrower_id: current_user.id).id
+        #byebug
+        if @review.save
+            flash[:success] = "Thank You. Your review was created successfully"
+            redirect_to @listing = Listing.find_by_id(params["listing_id"])
+        else
+            @listing = Listing.find_by_id(params["listing_id"])
+            render :new
+        end
     end
 
     def show
