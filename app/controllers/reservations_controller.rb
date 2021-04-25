@@ -14,6 +14,7 @@ class ReservationsController < ApplicationController
         @reservation.borrower_id = current_user.id
         #byebug
         if @reservation.save
+            flash[:success] = "Reservation created successfully."
             redirect_to @reservation
         else
             @listing = Listing.find_by_id(params["listing_id"])
@@ -40,6 +41,7 @@ class ReservationsController < ApplicationController
     def update
         @reservation.update(reservation_params)
         if @reservation.valid?
+            flash[:success] = "Reservation successfully updated."
             redirect_to @reservation 
         else
             render :edit
@@ -52,7 +54,7 @@ class ReservationsController < ApplicationController
 
     def destroy
         find_reservation.delete
-        flash[:success] = "Reservation deleted successfully"
+        flash[:success] = "Reservation deleted successfully."
         redirect_to reservations_path
     end
 

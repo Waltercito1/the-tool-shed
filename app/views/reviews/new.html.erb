@@ -12,7 +12,7 @@
             </div>
             <div class="form-input">
             <%= f.label :rating, :class=>"block text-sm font-medium text-gray-700" %>
-            <%= f.select :rating, options_for_select([ "1" , "2", "3", "4", "5"], selected: @review.rating), include_blank: "Select a rating", :required=>true %>
+            <%= f.select :rating, options_for_select([ "5" , "4", "3", "2", "1"], selected: @review.rating), include_blank: "Select a rating", :required=>true %>
             </div>
             <div class="m-6 flex-auto flex space-x-3">
                 <%= f.submit %>

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
+            flash[:success] = "New user profile successfully created."
             redirect_to @user
         else
             render :new
@@ -31,6 +32,7 @@ class UsersController < ApplicationController
     def update
         @user.update(user_params)
         if @user.valid?
+            flash[:success] = "Profile updated successfully."
             redirect_to @user
         else
             render :edit
@@ -40,8 +42,8 @@ class UsersController < ApplicationController
     def destroy
         find_user.delete
         session[:user_id] = nil
-        redirect_to '/'
-        
+        flash[:success] = "User deleted successfully."
+        redirect_to '/'    
     end
 
     private

@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
         @listing = current_user.open_listings.create(listing_params)
         if @listing.valid?
             set_as_lender
+            flash[:success] = "Listing created successfully."
             redirect_to @listing
         else
             render :new
@@ -34,6 +35,7 @@ class ListingsController < ApplicationController
     def update
         @listing.update(listing_params)
         if @listing.valid?
+            flash[:success] = "Listing updated successfully."
             redirect_to @listing
         else
             render :edit
@@ -42,6 +44,7 @@ class ListingsController < ApplicationController
 
     def destroy
         if @listing.destroy
+            flash[:success] = "Listing deleted successfully."
             redirect_to listings_path
         else
             redirect_to @listing
