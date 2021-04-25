@@ -31,11 +31,17 @@
     </nav>
 
     <% flash.each do |type, msg| %>
-    
-      <div class="flex items-center justify-center flash_errors">
+      <div class="flex items-center justify-center">
+      <% if type == "success" %>
+        <div class="flash_success">
         <%= msg %>
+        </div>
+      <% else %>
+        <div class="flash_errors">
+        <%= msg %>
+        </div>
+      <% end %>
       </div>
-
     <% end %>
 
     <%= yield %>

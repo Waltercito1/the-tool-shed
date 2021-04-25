@@ -22,9 +22,13 @@
 }
 
 .flash_errors {
-    /* padding: 2px; */
     display: inline;
     color: red
+}
+
+.flash_success {
+    display: inline;
+    color: rgb(25, 0, 255)
 }
 
 /* NAV BAR */
