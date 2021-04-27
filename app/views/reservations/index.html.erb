@@ -80,6 +80,7 @@
             <%= link_to "Modify or Delete your reservation", r, url:"/reservations/#{r.id}/edit", class:"w-1/4 flex items-center justify-center rounded-md bg-green-300 border border-solid border-green-300" %>
         </div>
       <% else %>
+ 
         <div class="flex-auto flex space-x-3">
             <%= link_to "Write a Review", new_listing_review_path(r.listing.id), class:"w-1/4 flex items-center justify-center rounded-md bg-blue-300 border border-solid border-blue-300" %>    
         </div>

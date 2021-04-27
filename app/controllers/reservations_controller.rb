@@ -32,7 +32,6 @@ class ReservationsController < ApplicationController
     end
 
     def show
-        find_reservation 
     end
 
     def edit

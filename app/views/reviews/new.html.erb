@@ -3,6 +3,8 @@
         <h3 class="mt-6 text-2xl leading-6 font-medium text-gray-900">
             We Appreciate Your Feedback
         </h3>
+        <p>Please let us know about your experience using the:</p>
+        <h2 class="font-medium text-blue-600"><%= @review.listing.title %></h2>
         <div class="new-form">
                 <%= form_with(model: [@review.listing, @review]) do |f| %>
                 

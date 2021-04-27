@@ -10,6 +10,7 @@ class Reservation < ApplicationRecord
     validates :check_out, presence: true
     validate :available
     validate :check_out_is_after_check_in
+    validate :check_in_is_in_the_future
 
     
     def duration
@@ -18,6 +19,12 @@ class Reservation < ApplicationRecord
     
     def total_price
         listing.price * duration
+    end
+
+    def check_in_is_in_the_future
+      if check_in && check_in < Date.today
+        errors.add(:error, "Your check-in date must be inthe future.")
+      end
     end
 
     def check_out_is_after_check_in
