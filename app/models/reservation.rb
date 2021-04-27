@@ -5,6 +5,7 @@ class Reservation < ApplicationRecord
     
     scope :pending_approval, -> { where status: "Pending"}
     scope :reservations_of_listing, -> (current_user_id, params_listing_id) {where("borrower_id = ? and listing_id = ?", current_user_id, params_listing_id).order(created_at: :asc)}
+    scope :find_reservation_for_review, -> (current_user_id, params_listing_id) {where("borrower_id = ? and listing_id = ?", current_user_id, params_listing_id).ids[0]}
 
     validates :check_in, presence: true
     validates :check_out, presence: true
