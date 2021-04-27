@@ -13,7 +13,6 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
         @reservation.listing_id = params["listing_id"]
         @reservation.borrower_id = current_user.id
-        #byebug
         if @reservation.save
             flash[:success] = "Reservation created successfully."
             redirect_to @reservation
@@ -33,10 +32,6 @@ class ReservationsController < ApplicationController
     end
 
     def show
-        if @reservation == nil
-            flash[:error] = "Reservation not found."
-            redirect_to '/'
-        end
     end
 
     def edit
@@ -73,11 +68,12 @@ class ReservationsController < ApplicationController
     end
 
     def find_reservation
-        @reservation = Reservation.find_by_id(params[:id])
+        @reservation = Reservation.find(params[:id])
     end
 
     def not_found
-        render :"errors/record_not_found"
+        flash[:error] = "Reservation not found. Please use the menu bar to find the resource you are looking for."
+        redirect_to listings_path
     end
 
 end

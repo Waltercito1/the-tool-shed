@@ -22,5 +22,7 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index]
   resources :reviews, only: [:index, :new, :create]
 
+  match '*path' => 'errors#error_404', via: :all
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

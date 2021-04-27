@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
-    before_action :find_review, only: [:show, :index]
+    before_action :find_review, only: [:show, :edit, :update, :destroy]
     before_action :redirect_if_not_logged_in
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     def new
         if params[:listing_id]
@@ -24,7 +25,6 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        find_review
     end
 
     def index
@@ -38,8 +38,12 @@ class ReviewsController < ApplicationController
     end
 
     def find_review
-        @review = Review.find_by_id(params[:id])
+        @review = Review.find(params[:id])
     end
 
+    def not_found
+        flash[:error] = "Review not found. Please use the menu bar to find the resource you are looking for."
+        redirect_to listings_path
+    end
 
 end

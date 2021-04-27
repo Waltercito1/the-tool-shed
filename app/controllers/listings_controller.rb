@@ -11,11 +11,7 @@ class ListingsController < ApplicationController
         end
     end
 
-    def shows
-        if @lisitng == nil
-            flash[:error] = "Listing not found."
-            redirect_to '/'
-        end
+    def show
     end
 
     def new 
@@ -70,7 +66,8 @@ class ListingsController < ApplicationController
     end
 
     def not_found
-        render :"errors/record_not_found"
+        flash[:error] = "Listing not found. Please use the menu bar to find the resource you are looking for."
+        redirect_to listings_path
     end
 
 end
