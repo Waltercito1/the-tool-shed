@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
         @review.listing_id = params["listing_id"]
         @review.borrower_id = current_user.id
         @review.reservation_id = Reservation.find_reservation_for_review(current_user.id, params[:listing_id])
-        byebug
+        #byebug
         if @review.save
             flash[:success] = "Thank You. Your review was created successfully"
             redirect_to @listing = Listing.find_by_id(params["listing_id"])
