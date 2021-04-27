@@ -33,9 +33,17 @@ class ReservationsController < ApplicationController
     end
 
     def show
+        if @reservation == nil
+            flash[:error] = "Reservation not found."
+            redirect_to '/'
+        end
     end
 
     def edit
+        if @reservation == nil
+            flash[:error] = "Reservation not found."
+            redirect_to '/'
+        end
     end
 
     def update

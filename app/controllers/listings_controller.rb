@@ -11,8 +11,11 @@ class ListingsController < ApplicationController
         end
     end
 
-    def show
-        find_listing
+    def shows
+        if @lisitng == nil
+            flash[:error] = "Listing not found."
+            redirect_to '/'
+        end
     end
 
     def new 
@@ -31,6 +34,10 @@ class ListingsController < ApplicationController
     end
 
     def edit
+        if @lisitng == nil
+            flash[:error] = "Listing not found."
+            redirect_to '/'
+        end
     end
 
     def update
@@ -59,7 +66,7 @@ class ListingsController < ApplicationController
     end
 
     def find_listing
-        @listing = Listing.find_by_id(params[:id])
+        @listing = Listing.find(params[:id])
     end
 
     def not_found
