@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
     before_action :find_reservation, only: [:show, :edit, :update, :destroy]
     before_action :redirect_if_not_logged_in
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
     
     def new
         if params[:listing_id]
@@ -65,6 +66,10 @@ class ReservationsController < ApplicationController
 
     def find_reservation
         @reservation = Reservation.find_by_id(params[:id])
+    end
+
+    def not_found
+        render :"errors/record_not_found"
     end
 
 end

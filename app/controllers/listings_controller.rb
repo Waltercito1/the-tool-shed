@@ -1,5 +1,7 @@
 class ListingsController < ApplicationController
     before_action :find_listing, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_logged_in, only: [:show, :edit, :update, :destroy]
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     def index
         if params["search"]
@@ -10,7 +12,6 @@ class ListingsController < ApplicationController
     end
 
     def show
-        redirect_if_not_logged_in
         find_listing
     end
 
@@ -59,6 +60,10 @@ class ListingsController < ApplicationController
 
     def find_listing
         @listing = Listing.find_by_id(params[:id])
+    end
+
+    def not_found
+        render :"errors/record_not_found"
     end
 
 end

@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :find_review, only: [:show, :index]
+    before_action :redirect_if_not_logged_in
 
     def new
         if params[:listing_id]
