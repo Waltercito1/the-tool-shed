@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
     #lender
     #To find lenders in controllers do @lenders = User.where(lender: true)
-    has_many :open_listings, class_name: "Listing", foreign_key: :lender_id
+    has_many :open_listings, class_name: "Listing", foreign_key: :lender_id #, dependent: :destroy
     has_many :reservations, through: :open_listings
     has_many :reviews, through: :reservations
     has_many :borrowers, through: :reservations, source: :borrower
@@ -13,6 +13,10 @@ class User < ApplicationRecord
     #scopes
     scope :lenders, -> {where is_lender: true}
     scope :borrowers, -> { where is_lender: false}
+
+    #scope :most_reviewed_listings, -> {User.joins(:open_listings).joins(:reservations).joins(:reviews).where("reviews_count > ?", 5).order(:created_at)}
+    #scope :most_reviewed_listings, -> {User.joins(:reservations).joins(:reviews).where("reviews_count > ?", 5).order(:created_at)}
+    #User.joins(:reviews).merge(Review.group(:user_id).having('AVG(rating) > 4'))
 
     validates :first_name,  presence: true
     validates :last_name,  presence: true
