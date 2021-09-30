@@ -10,8 +10,5 @@ class Listing < ApplicationRecord
 
     scope :search_by_name, -> (search) {where("title LIKE ?", "%#{search}%")}
 
-    # def average_review_rating
-    #   reviews.average(:rating)
-    # end
-  
+    scope :highest_rating_tool, -> {Listing.joins(:reviews).group("id").order("rating DESC").limit(1)}
 end
